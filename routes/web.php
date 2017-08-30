@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/admin', function(){
+	return view('backend.admin.login');
+});
+
+Route::get('/admin/register', function(){
+	return view('backend.admin.register');
+});
