@@ -22,3 +22,7 @@ Route::get('/admin', function(){
 Route::get('/admin/register', function(){
 	return view('backend.admin.register');
 });
+
+Route::get('/admin/dashboard', function(){
+	return view('backend.admin.dashboard');
+});
