@@ -24,5 +24,25 @@ Route::get('/admin/register', function(){
 });
 
 Route::get('/admin/dashboard', function(){
-	return view('backend.admin.dashboard');
+	return view('backend.admin.dashboardv1');
+});
+
+Route::get('/admin/dashboardv2', function(){
+	return view('backend.admin.dashboardv2');
+});
+
+Route::get('/admin/calendar', function(){
+	return view('backend.admin.calendar');
+});
+
+Route::get('/admin/mailbox', function(){
+	return view('backend.admin.mailbox');
+});
+
+Route::get('/admin/compose-mail', function(){
+	return view('backend.admin.compose-mail');
+});
+
+Route::get('/admin/read-mail', function(){
+	return view('backend.admin.read-mail');
 });
