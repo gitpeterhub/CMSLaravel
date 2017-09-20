@@ -5,12 +5,15 @@
 @section('styles')
 <!-- Morris chart -->
   <link rel="stylesheet" href="{{url('bower_components/morris.js/morris.css')}}">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="{{url('bower_components/jvectormap/jquery-jvectormap.css')}}">
  <!-- Date Picker -->
    <link rel="stylesheet" href="{{url('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')}}">
   <!-- Daterange picker -->
   <link rel="stylesheet" href="{{url('bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+ 
 @endsection
 @section('contents')
  <!-- Content Wrapper. Contains page content -->
@@ -544,6 +547,11 @@
 <!-- Morris.js charts -->
 <script src="{{url('bower_components/raphael/raphael.min.js')}}"></script>
 <script src="{{url('bower_components/morris.js/morris.min.js')}}"></script>
+<!-- Sparkline -->
+<script src="{{url('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
+<!-- jvectormap -->
+<script src="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{url('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 <!-- jQuery Knob Chart -->
 <script src="{{url('bower_components/jquery-knob/dist/jquery.knob.min.js')}}"></script>
 <!-- daterangepicker -->

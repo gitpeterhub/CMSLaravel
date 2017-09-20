@@ -3,7 +3,8 @@
 <title>AdminLTE 2 | DashboardV2</title>
 @endsection
 @section('styles')
-
+ <!-- jvectormap -->
+  <link rel="stylesheet" href="{{url('bower_components/jvectormap/jquery-jvectormap.css')}}">
 @endsection
 @section('contents')
 
@@ -849,6 +850,11 @@
 
 @endsection
 @section('scripts')
+<!-- Sparkline -->
+<script src="{{url('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
+<!-- jvectormap  -->
+<script src="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
+<script src="{{url('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
 <!-- ChartJS -->
 <script src="{{url('bower_components/chart.js/Chart.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->

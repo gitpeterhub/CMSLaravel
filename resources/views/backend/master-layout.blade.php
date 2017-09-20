@@ -16,10 +16,6 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="{{url('dist/css/skins/_all-skins.min.css')}}">
- 
-  <!-- jvectormap -->
-  <link rel="stylesheet" href="{{url('bower_components/jvectormap/jquery-jvectormap.css')}}">
- 
 
   @yield('styles')
 
@@ -243,22 +239,13 @@
 
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-
+@yield('scripts')
 <!-- FastClick -->
 <script src="{{url('bower_components/fastclick/lib/fastclick.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{url('dist/js/adminlte.min.js')}}"></script>
-<!-- Sparkline -->
-<script src="{{url('bower_components/jquery-sparkline/dist/jquery.sparkline.min.js')}}"></script>
-<!-- jvectormap -->
-<script src="{{url('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js')}}"></script>
-<script src="{{url('plugins/jvectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
-
 <!-- Slimscroll -->
 <script src="{{url('bower_components/jquery-slimscroll/jquery.slimscroll.min.js')}}"></script>
-
-
-@yield('scripts')
 
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('dist/js/demo.js')}}"></script>
