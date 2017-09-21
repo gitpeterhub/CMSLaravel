@@ -5,6 +5,8 @@
   @yield('title')
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+   <!-- keeping jquey min ahead of all other scripts and js plugins to work -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{url('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
   <!-- Font Awesome -->
@@ -235,8 +237,8 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 3 -->
-<script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
-
+<!-- <script src="{{url('bower_components/jquery/dist/jquery.min.js')}}"></script>
+ -->
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 @yield('scripts')

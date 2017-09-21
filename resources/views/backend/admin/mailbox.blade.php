@@ -3,8 +3,8 @@
 <title>AdminLTE 2 | Mailbox</title>
 @endsection
 @section('styles')
-  <!-- iCheck -->
-  <link rel="stylesheet" href="../../plugins/iCheck/flat/blue.css">
+   <!-- iCheck -->
+  <link rel="stylesheet" href="{{url('plugins/iCheck/flat/blue.css')}}">
 @endsection
 @section('contents')
   <!-- Content Wrapper. Contains page content -->
@@ -292,6 +292,10 @@
 <script src="{{url('plugins/iCheck/icheck.min.js')}}"></script>
 <!-- Page Script -->
 <script>
+
+  $('.mailbox').siblings().removeClass('active');
+  $('.mailbox').addClass('active');
+
   $(function () {
     //Enable iCheck plugin for checkboxes
     //iCheck for checkbox and radio inputs

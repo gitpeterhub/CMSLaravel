@@ -114,6 +114,10 @@
 <script src="../bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
 <!-- Page specific script -->
 <script>
+
+  $('.calendar').siblings().removeClass('active');
+  $('.calendar').addClass('active');
+
   $(function () {
 
     /* initialize the external events

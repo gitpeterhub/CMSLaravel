@@ -38,6 +38,15 @@
             <li><a href="{{url('admin/dashboardv2')}}"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
+        <li class="user-management">
+          <a href="{{url('admin/user-management')}}">
+            <i class="fa fa-Users"></i> <span>User Management</span>
+            <span class="pull-right-container">
+              <small class="label pull-right bg-red">3</small>
+              <small class="label pull-right bg-blue">17</small>
+            </span>
+          </a>
+        </li>
         <li class="treeview">
           <a href="#">
             <i class="fa fa-files-o"></i>
@@ -118,7 +127,7 @@
             <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
           </ul>
         </li>
-        <li>
+        <li class="calendar">
           <a href="{{url('admin/calendar')}}">
             <i class="fa fa-calendar"></i> <span>Calendar</span>
             <span class="pull-right-container">
@@ -127,7 +136,7 @@
             </span>
           </a>
         </li>
-        <li>
+        <li class="mailbox">
           <a href="{{url('admin/mailbox')}}">
             <i class="fa fa-envelope"></i> <span>Mailbox</span>
             <span class="pull-right-container">
