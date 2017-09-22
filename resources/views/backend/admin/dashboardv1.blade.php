@@ -32,6 +32,19 @@
 
     <!-- Main content -->
     <section class="content">
+      @if(Session::has('flash_message'))
+        <div class="alert alert-info alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+        <strong id="site-message">
+          <p>{{Session::get('flash_message')}}</p>
+        </strong>
+    </div>
+      @endif
+      @if(@Auth::user()->user_type === 1)
+      <a class="btn btn-warning" href="{{url('admin/down')}}">Maintainence Mode On</a><a class="btn btn-success" href="{{url('admin/up')}}">Maintainence Mode Off</a>
+      @endif
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-xs-6">

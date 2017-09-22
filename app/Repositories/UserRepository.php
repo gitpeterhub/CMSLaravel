@@ -78,7 +78,7 @@ class UserRepository extends Repository {
                /* $nestedData['actions'] = '<a href="#" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
                      <a href="#" title="Delete" class="userRemove" btn-value="'.$user->id.'"><i class="fa fa-trash edit-icons del"></i></a>';*/
 
-                $nestedData['action'] = '<a href="javascript:void(0)" title="Edit" class="userUpdate" btn-value="'.$user->id.'" data-toggle="modal" data-target="#myModal"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
+                $nestedData['action'] = '<a href="/admin/users/'.$user->id.'/edit" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
                      <a href="javascript:void(0)" title="Delete" onclick="userRemove()" btn-value="'.$user->id.'"
                      ><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;

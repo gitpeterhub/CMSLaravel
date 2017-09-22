@@ -38,8 +38,8 @@
             <li><a href="{{url('admin/dashboardv2')}}"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="user-management">
-          <a href="{{url('admin/user-management')}}">
+        <li class="users">
+          <a href="{{url('admin/users')}}">
             <i class="fa fa-Users"></i> <span>User Management</span>
             <span class="pull-right-container">
               <small class="label pull-right bg-red">3</small>

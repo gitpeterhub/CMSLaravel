@@ -10,10 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::get('/admin/login', function(){
 	return view('backend.admin.login');
@@ -55,12 +57,44 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 	//Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
    $this->get('/dashboard', 'Backend\Admin\DashboardController@index')->name('dashboard');
 
-   $this->get('/user-management', 'Backend\Admin\UserController@index');
+   Route::resource('users', 'Backend\Admin\UserController');
+   //$this->get('/users', 'Backend\Admin\UserController@index');
    $this->post('/users', 'Backend\Admin\UserController@getAll');
+   // $this->get('/users/{id}/edit', 'Backend\Admin\UserController@edit');
 
    //uses laravel's default logout routes
    
    $this->get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+   /*Route::get('/secret-cookie', function() {
+
+	$response = new Illuminate\Http\Response('Cookie installed');
+
+	$response->withCookie(cookie()->forever('secret-cookie', 'peter'));
+
+	return $response;
+	});*/
+
+   Route::get('/up', function() {
+    \Artisan::call('up');
+
+     Session::flash('flash_message', 'Your site is live now!');
+
+	    return back();
+	});
+
+	Route::get('/down', function() {
+
+		$response = new Illuminate\Http\Response('Cookie installed');
+
+		$response->withCookie(cookie()->forever('secret-cookie', 'peter'));
+
+	    Session::flash('flash_message', 'Your site is in maintenance mode!');
+
+	    \Artisan::call('down');
+
+	    return $response;
+	});
    
 });
 // Registration Routes...

@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function index()
     {
-         return view('backend.admin.user-management.index');
+         return view('backend.admin.users.index');
     }
 
     /**
@@ -68,6 +68,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+
+        return view('backend.admin.users.form');
         //for updating group that user belongs
         if ($request->group_id != '0') {
 

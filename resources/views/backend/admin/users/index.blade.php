@@ -65,8 +65,8 @@
 
 <script>
 
-  $('.user-management').siblings().removeClass('active');
-  $('.user-management').addClass('active');
+  $('.users').siblings().removeClass('active');
+  $('.users').addClass('active');
   
   </script>
 <!-- DataTables -->
