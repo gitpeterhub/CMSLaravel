@@ -82,7 +82,7 @@ class UserController extends Controller
                }
 
             //dd($input);
-            $input['password'] = encrypt($input['password']);
+            $input['password'] = bcrypt($input['password']);
             //$input['status'] = "Not Approved";
 
             
@@ -115,7 +115,7 @@ class UserController extends Controller
     {
         $user = $this->userRepo->find($id);
 
-        $user->password = Crypt::decrypt($user->password);
+        //$user->password = Crypt::decrypt($user->password);
 
         return view('backend.admin.users.form')->with('user',$user);
         
