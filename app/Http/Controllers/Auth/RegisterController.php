@@ -59,6 +59,8 @@ class RegisterController extends Controller
                 $request, $validator
             );
         }
+
+
     
         // create the user
         $user = $this->create($request->all());
@@ -77,24 +79,20 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            //'username'               => 'required|unique:users|min:4',
-            //'first_name'            => 'required',
-            //'last_name'             => 'required',
-            //'email'                 => 'required|email|unique:users',
-            //'password'              => 'required|min:6|max:20',
+            
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|unique:users|max:255',
+            'username' => 'required|string|unique:users|max:20',
             'password' => 'required|string|min:6',
             'confirm_password' => 'required|same:password',
+            //'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ],
         [
-                //'username.required'     => 'Username is required',
-                //'username.min'           => 'Username needs to have at least 6 characters',
-                //'first_name.required'   => 'First Name is required',
-                //'last_name.required'    => 'Last Name is required',
-                'name.required'         => 'Name is requierd',
+                
+                'name.required'         => 'Name is required',
                 'email.required'        => 'Email is required',
                 'email.email'           => 'Email is invalid',
+                'username.required'     => 'Username is required',
                 'password.required'     => 'Password is required',
                 'password.min'          => 'Password needs to have at least 6 characters',
                 'password.max'          => 'Password maximum length is 20 characters',
@@ -113,6 +111,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'user_type' => 2,
             'password' => bcrypt($data['password']),
         ]);

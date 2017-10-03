@@ -14,13 +14,13 @@ class UserRepository extends Repository {
      *
      * @return mixed
      */
-    function model()
+    public function model()
     {
         return 'App\Models\User';
     }
 
 
-    function getAll($request){
+    public function getAll($request){
 
 
         $columns = array( 
@@ -98,7 +98,6 @@ class UserRepository extends Repository {
         //return view('page',compact('$member'))
 
     }
-
 
 
 }

@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/test-repo', 'Backend\Admin\UserController@testRepo');
 
 Route::get('/admin/login', function(){
 	return view('backend.admin.login');
@@ -57,9 +58,12 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 	//Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
    $this->get('/dashboard', 'Backend\Admin\DashboardController@index')->name('dashboard');
 
+   //resource generates all the needed routes for that controller, see documentation for more..
    Route::resource('users', 'Backend\Admin\UserController');
    //$this->get('/users', 'Backend\Admin\UserController@index');
-   $this->post('/users', 'Backend\Admin\UserController@getAll');
+
+   //datatable post route definition for user management
+   $this->post('/get-users/', 'Backend\Admin\UserController@getAll');
    // $this->get('/users/{id}/edit', 'Backend\Admin\UserController@edit');
 
    //uses laravel's default logout routes
