@@ -61,6 +61,7 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    //resource generates all the needed routes for that controller, see documentation for more..
    Route::resource('users', 'Backend\Admin\UserController');
    //$this->get('/users', 'Backend\Admin\UserController@index');
+   $this->get('/users/{id}/delete', 'Backend\Admin\UserController@destroy');
 
    //datatable post route definition for user management
    $this->post('/get-users/', 'Backend\Admin\UserController@getAll');

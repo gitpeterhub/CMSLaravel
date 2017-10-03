@@ -173,18 +173,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        ///Selecting the user to be deleted 
-        //This gives instance/object of that user
-        $user = $this->user->find($id);
+       $this->userRepo->delete($id);
 
-        // delete rows from related models eg:  
-        //$user->photo()->delete();
-
-        //Deleting the record of user in which group he belongs
-        DB::table('group_user')->where('user_id',$id)->delete();
-
-        //finally deleting the user to be deleted
-        $user->delete();
+       Session::flash('message','User deleted successfully!');
+       Session::flash('alert-class', 'alert-success');
 
         return back();
     }
