@@ -8,8 +8,9 @@ use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Validator;
 // import the Intervention Image Manager Class
 use Intervention\Image\ImageManagerStatic as Image;
-//use File;
+use File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -81,7 +82,7 @@ class UserController extends Controller
                }
 
             //dd($input);
-            $input['password'] = bcrypt($input['password']);
+            $input['password'] = encrypt($input['password']);
             //$input['status'] = "Not Approved";
 
             
@@ -101,7 +102,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //i have used edit method both for viewing form and editing
+        // i have use edit method both for viewing and editing purpose
     }
 
     /**
@@ -112,45 +113,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $user = $this->userRepo->find($id);
 
-        return view('backend.admin.users.form');
-        //for updating group that user belongs
-        if ($request->group_id != '0') {
+        $user->password = Crypt::decrypt($user->password);
 
-            $result = DB::table('group_user')
-                ->where('user_id',$request->user_id)
-                ->exists();
-            
-            if ($result) {
-                
-                
-                DB::table('group_user')
-                    ->where('user_id', $request->user_id)
-                    ->update([
-                        'group_id' => $request->group_id
-
-                        ]);
-                    
-            }else{
-
-                DB::table('group_user')->insert([
-                    'user_id' => $request->user_id, 
-                    'group_id' => $request->group_id
-                    ]);
-            }
-        }
+        return view('backend.admin.users.form')->with('user',$user);
         
-        //updating user 
-        User::where('id', $request->user_id)
-          //->where('destination', 'San Diego')
-          ->update([
-
-            'name' => $request->name,
-            'email' => $request->email,
-            
-            ]);
-
-          return 1;
     }
 
     /**
@@ -161,8 +129,34 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    {   
+        
+        //dd($request->all());
+
+        if (file_exists(public_path() . '/uploads/thumbnails/' . $request['prev_photo'])) {
+
+            // Delete a single file
+            File::delete(public_path() . '/uploads/thumbnails/' . $request['prev_photo']);
+            File::delete(public_path() . '/uploads/profile-pics/' . $request['prev_photo']);
+
+        }
+
+        if ($request->hasFile('photo')){
+
+                  $input = $this->makeThumbnails($request);
+                   
+               }
+               unset($input['_token']);
+               unset($input['prev_photo']);
+            //dd($input);
+            $input['password'] = encrypt($input['password']);
+
+        $this->userRepo->update($input,$id);
+
+       Session::flash('message','User updated successfully!');
+       Session::flash('alert-class', 'alert-success');
+
+        return back();
     }
 
     /**

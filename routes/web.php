@@ -63,6 +63,8 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    //$this->get('/users', 'Backend\Admin\UserController@index');
    $this->get('/users/{id}/delete', 'Backend\Admin\UserController@destroy');
 
+   $this->post('/users/update/{id}', 'Backend\Admin\UserController@update');
+
    //datatable post route definition for user management
    $this->post('/get-users/', 'Backend\Admin\UserController@getAll');
    // $this->get('/users/{id}/edit', 'Backend\Admin\UserController@edit');

@@ -34,35 +34,53 @@
 
     <!-- Main content -->
     <section class="content">
+      @if(Session::has('message'))
+                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong id="site-message">
+                  <p>{{Session::get('message')}}</p>
+                </strong>
+            </div>
+            {{Session::forget('message')}}
+          @endif
       <!-- row starts -->
         <div class="row">
             <div class="col-md-12">
-              <form action="{{url('admin/users')}}" method="POST">
+              <form action="{{url('/admin/users/update')}}/{{$user->id}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                   <div class="col-md-6">
+                    <div class="form-group hidden">
+                      <input type="text" class="form-control" id="prev_photo" name="prev_photo" value="{{$user->photo}}">
+                    </div>
                     <div class="form-group">
                       <label for="name">Full Name:</label>
-                      <input type="text" class="form-control" id="name" placeholder="Enter Your Full Name" name="name">
+                      <input type="text" class="form-control" id="name" placeholder="Enter Your Full Name" name="name" value="{{$user->name}}">
                     </div>
                     <div class="form-group">
                       <label for="email">Email:</label>
-                      <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email">
+                      <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email" value="{{$user->email}}">
                     </div>
                     <div class="form-group">
                       <label for="password">Password</label>
-                      <input type="text" class="form-control" id="password" placeholder="Enter Your Password" name="password">
+                      <input type="text" class="form-control" id="password" placeholder="Enter Your Password" name="password" value="{{$user->password}}">
                     </div>
                     <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group" >
-                      <div id="imagePreview"></div>
+                      <div id="imagePreview" style="background: url({{$user->photo_url}});"></div>
                       <br/>
                       <label class="control-label new-label" for="photo">
                       <input style="display: none" name="photo" type="file" id="photo">
-                      <span class="btn btn-primary" id="photo-button">Choose Photo</span>
+                      @if($user->photo_url != null)
+                      <span class="btn btn-primary" id="photo-button">Change Photo</span>
+                      @else
+                      <span class="btn btn-primary" id="photo-button">Choose Photo</span>                   
                       </label>
+                      @endif
                     </div>
                   </div>
                 </div>

@@ -22,7 +22,7 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'user_type' => 3,
         'photo' => 'sdfklsdkfj',
         'photo_url' => 'ashdfhsh',
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = encrypt('secret'),
         'remember_token' => str_random(10),
     ];
 });
