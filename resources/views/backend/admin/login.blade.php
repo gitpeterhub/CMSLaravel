@@ -28,6 +28,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition login-page">
+  @if(Session::has('message'))
+                <div class="alert alert-info alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong id="site-message">
+                  <p>{{Session::get('message')}}</p>
+                </strong>
+            </div>
+            {{Session::forget('message')}}
+          @endif
 <div class="login-box">
   <div class="login-logo">
     <a href="{{url('/index2.html')}}"><b>Admin</b>LTE</a>

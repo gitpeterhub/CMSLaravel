@@ -16,6 +16,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/verify-email/{token}', 'Auth\RegisterController@verify');
+
 Route::get('/test-repo', 'Backend\Admin\UserController@testRepo');
 
 Route::get('/admin/login', function(){

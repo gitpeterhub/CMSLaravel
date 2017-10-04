@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -25,7 +26,26 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    //protected $redirectTo = '/admin/dashboard';
+
+    /**
+      * Get the post register / login redirect path.
+      *
+      * @return string
+      */
+      protected function redirectTo()
+      {
+          if (\Auth::user()->verified == 1) {
+              return '/admin/dashboard';
+          }
+
+          else {
+
+                \Auth::logout();
+                Session::put('message','You need to verify your email first!');
+              return '/admin/login';
+          }
+      }
 
     /**
      * lockoutTime
