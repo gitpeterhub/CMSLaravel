@@ -133,24 +133,27 @@ class UserController extends Controller
         
         //dd($request->all());
 
-        if (file_exists(public_path() . '/uploads/thumbnails/' . $request['prev_photo'])) {
-
-            // Delete a single file
-            File::delete(public_path() . '/uploads/thumbnails/' . $request['prev_photo']);
-            File::delete(public_path() . '/uploads/profile-pics/' . $request['prev_photo']);
-
-        }
+        $input = $request->all();
 
         if ($request->hasFile('photo')){
 
-                  $input = $this->makeThumbnails($request);
-                   
+                  if (file_exists(public_path() . '/uploads/thumbnails/' . $request['prev_photo'])) {
+
+                    // Delete a single file
+                    File::delete(public_path() . '/uploads/thumbnails/' . $request['prev_photo']);
+                    File::delete(public_path() . '/uploads/profile-pics/' . $request['prev_photo']);
+
+                }
+                  $input = $this->makeThumbnails($request);                   
                }
+               
+               if (isset($input['password'])) {
+                $input['password'] = bcrypt($input['password']);   
+               }
+
                unset($input['_token']);
                unset($input['prev_photo']);
             //dd($input);
-            $input['password'] = encrypt($input['password']);
-
         $this->userRepo->update($input,$id);
 
        Session::flash('message','User updated successfully!');

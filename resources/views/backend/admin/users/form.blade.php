@@ -57,16 +57,15 @@
                     </div>
                     <div class="form-group">
                       <label for="name">Full Name:</label>
-                      <input type="text" class="form-control" id="name" placeholder="Enter Your Full Name" name="name" value="{{$user->name}}">
+                      <input type="text" class="form-control" id="name" placeholder="Enter Your Full Name" name="name" value="{{$user->name}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="email">Email:</label>
-                      <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email" value="{{$user->email}}">
+                      <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email" value="{{$user->email}}" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="password">Password</label>
-                      <input type="text" class="form-control" id="password" placeholder="Enter Your Password" name="password" value="{{$user->password}}">
-                    </div>
+                      <label>Change Password</label>&nbsp;&nbsp;<input type="checkbox" id="checkbox">
+                    </div>                    
                     <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
@@ -98,10 +97,23 @@
 
 <script>
 
-  $('.user-management').siblings().removeClass('active');
-  $('.user-management').addClass('active');
-  
+  $('.users').siblings().removeClass('active');
+  $('.users').addClass('active');
+
+
+  $('#checkbox').on('change',function(){
+   
+     if ($("#checkbox").is(":checked")) {
+    $(this).parent().append('<input type="text" class="form-control" id="password" placeholder="Enter Your Password" name="password" required="required">');
+
+    }else{
+       $("#checkbox").next().remove();
+    };
+  })
   </script>
+
+
+
 <!-- DataTables -->
 <script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}">
 </script>
