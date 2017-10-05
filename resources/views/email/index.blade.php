@@ -5,6 +5,6 @@
 </head>
 <body>
 	<h1>Click the Link To Verify Your Email</h1>
-	Click the following link to verify your email http://localhost:8000/verify-email/{{$email_token}}
+	Click the following link to verify your email {{url('verify-email/'.$email_token)}}
 </body>
 </html>
