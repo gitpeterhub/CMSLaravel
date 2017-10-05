@@ -102,7 +102,7 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 
 	    \Artisan::call('down');
 
-	    return $response;
+	    return back()->with(compact('response'));
 	});
    
 });
