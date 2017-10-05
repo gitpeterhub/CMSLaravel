@@ -110,3 +110,7 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 
 //$this->get('console/register', 'Auth\RegisterController@showRegisterForm')->name('register');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

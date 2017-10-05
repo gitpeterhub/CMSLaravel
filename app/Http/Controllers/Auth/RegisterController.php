@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Session;
 use Auth;
 use Illuminate\Auth\Events\Registered;
 use App\Jobs\SendVerificationEmail;
+use App\Mail\EmailVerification;
+use Mail;
 
 class RegisterController extends Controller
 {
@@ -62,9 +64,15 @@ class RegisterController extends Controller
             );
         }
 
+        /*These steps are for using queue jobs
         event(new Registered($user = $this->create($request->all())));
-        dispatch(new SendVerificationEmail($user));
+        dispatch(new SendVerificationEmail($user));*/
         //\Artisan::call('queue:work');
+
+        $user = $this->create($request->all());
+         $email = new EmailVerification($user);
+        Mail::to($user->email)->send($email);
+
         return redirect('admin/login')->with('message','You have successfully registered. An email is sent to you for verification');
     
         // create the user
