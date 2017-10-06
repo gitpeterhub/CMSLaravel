@@ -31,8 +31,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('log:demo')
                   ->everyMinute();*/
 
-        $schedule->command('queue:work --timeout=60')
-                  ->everyMinute();
+       /* $schedule->command('queue:work --timeout=60')
+                  ->everyMinute();*/
     }
 
     /**
