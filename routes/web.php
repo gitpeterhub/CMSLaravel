@@ -110,6 +110,10 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 
 //$this->get('console/register', 'Auth\RegisterController@showRegisterForm')->name('register');
 
+Route::get('/run-shell-command', function() {
+    $output = shell_exec('ls');
+    echo "<pre>$output</pre>";
+});
 
 Auth::routes();
 

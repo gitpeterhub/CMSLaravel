@@ -64,14 +64,13 @@ class RegisterController extends Controller
             );
         }
 
-        /*These steps are for using queue jobs
+        //These steps are for using queue jobs
         event(new Registered($user = $this->create($request->all())));
-        dispatch(new SendVerificationEmail($user));*/
-        //\Artisan::call('queue:work');
+        dispatch(new SendVerificationEmail($user));
 
-        $user = $this->create($request->all());
+        /*$user = $this->create($request->all());
          $email = new EmailVerification($user);
-        Mail::to($user->email)->send($email);
+        Mail::to($user->email)->send($email);*/
 
         return redirect('admin/login')->with('message','You have successfully registered. An email is sent to you for verification');
     

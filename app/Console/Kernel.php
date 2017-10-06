@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        //Register your custom commands here
+        'App\Console\Commands\LogDemo'
     ];
 
     /**
@@ -24,8 +25,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        /*$schedule->command('inspire')
+                  ->everyMinute();
+
+        $schedule->command('log:demo')
+                  ->everyMinute();*/
+
+        $schedule->command('queue:work --timeout=60')
+                  ->everyMinute();
     }
 
     /**
