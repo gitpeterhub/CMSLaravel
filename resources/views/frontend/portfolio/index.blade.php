@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{asset('portfolio-assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('portfolio-assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('portfolio-assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('portfolio-assets/css/animate.css')}}" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">John Doe</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#experience">EXPERIENCE</a></li>
+                        <li><a href="#education">EDUCATION</a></li>
+                        <li><a href="#skills">SKILLS</a></li>
+                        <li><a href="#expertise">EXPERTISE</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    </header>
+    <section class="intro">
+        <div class="container">
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-6 wow slideInLeft">
+                        <img src="{{asset('portfolio-assets/images/23e8ad88ae744df0bd7f5221f3d67b0e.webp')}}">
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-6  bg-gray introduction wow slideInRight">
+                        <h3>John Doe <br><span class="text-uppercase font-15"><strong>Lawyer and Consultant </strong></span></h3>
+                        <h4><strong>Phone: </strong><br> 9876543210</h4>
+                        <h4><strong>Email: </strong><br> example@xyz.com</h4>
+                        <h4><strong>Address: </strong><br> Kathmandu, Nepal</h4>
+                        <h4><strong>Date of Birth: </strong><br> March 14th, 1984</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="social-links">
+        <div class="container">
+            <div class="row">
+                <div class="links">
+                    <ul class="text-center">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+                    </ul>
+                </div>
+            </div>
+            <div class="texts text-center">
+                <h2>Hello I'm John</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+        </div>
+    </section>
+    <section id="experience" class="experience">
+        <div class="title">
+            <h3>EXPERIENCE</h3>
+        </div>
+        <div class="container rel-div">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="yr-div clearfix">
+                        <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exp-div">
+                        <div class="dot hidden-xs wow fadeInUp"></div>
+                        <h4 class="wow slideInRight">Company name</h4>
+                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="yr-div clearfix">
+                        <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exp-div">
+                        <div class="dot hidden-xs wow fadeInUp"></div>
+                        <h4 class="wow slideInRight">Company name</h4>
+                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="education" class="education">
+        <div class="title">
+            <h3>EDUCATION</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="yr-div clearfix">
+                        <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exp-div">
+                        <div class="dot hidden-xs wow fadeInUp"></div>
+                        <h4 class="wow slideInRight">Company name</h4>
+                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="yr-div clearfix">
+                        <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="exp-div">
+                        <div class="dot hidden-xs wow fadeInUp"></div>
+                        <h4 class="wow slideInRight">Company name</h4>
+                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="skills" class="skills">
+        <div class="title">
+            <h3>SKILLS</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="skill wow fadeInLeft">
+                        <h4>Hyper Text Markup Language(HTML)</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill wow fadeInRight">
+                        <h4>Hyper Text Markup Language(HTML)</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill wow fadeInLeft">
+                        <h4>Hyper Text Markup Language(HTML)</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill wow fadeInRight">
+                        <h4>Hyper Text Markup Language(HTML)</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill wow fadeInLeft">
+                        <h4>Hyper Text Markup Language(HTML)</h4>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill wow fadeInRight">
+                        <h4>Hyper Text Markup Language(HTML)</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="expertise" class="expertise">
+        <div class="title">
+            <h3>EXPERTISE</h3>
+        </div>
+        <div class="container p-40">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="contact">
+        <div class="title">
+            <h3>CONTACT ME</h3>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="footer-form">
+                        <form class="wow fadeInUp">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" placeholder="Name">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" placeholder="Subject">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <textarea class="form-control" placeholder="Message"></textarea>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group submit">
+                                    <input type="submit" class="form-control btn btn-primary" value="Send">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 b-l">
+                    <div class="footer-contact">
+                        <h4>John Doe <br><span class="text-uppercase font-15"><small>Lawyer and Consultant </small></span></h4>
+                        <h5><strong>Phone: </strong><br> 9876543210</h5>
+                        <h5><strong>Email: </strong><br> example@xyz.com</h5>
+                        <div class="line"></div>
+                        <div class="footer-link">
+                            <ul class="text-center">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright text-center">
+        <span> 2017 &copy; John Doe</span>
+    </section>
+    <script src="{{asset('portfolio-assets/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('portfolio-assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('portfolio-assets/js/custom.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script>
+        // Select all links with hashes
+        $('a[href*="#"]')
+            // Remove links that don't actually link to anything
+            .not('[href="#"]')
+            .not('[href="#0"]')
+            .click(function(event) {
+                // On-page links
+                if (
+                    location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+                    location.hostname == this.hostname
+                ) {
+                    // Figure out element to scroll to
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    // Does a scroll target exist?
+                    if (target.length) {
+                        // Only prevent default if animation is actually gonna happen
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 60
+                        }, 1000, function() {
+                            // Callback after animation
+                            // Must change focus!
+                            var $target = $(target);
+                            $target.focus();
+                            if ($target.is(":focus")) { // Checking if the target was focused
+                                return false;
+                            } else {
+                                $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
+                                $target.focus(); // Set focus again
+                            };
+                        });
+                    }
+                }
+            });
+
+    </script>
+</body>
+
+</html>

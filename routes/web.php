@@ -13,7 +13,11 @@
 use Illuminate\Support\Facades\Session;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontend.portfolio.index');
+});
+
+Route::get('/admin', function(){
+	return view('backend.admin.login');
 });
 
 Route::get('/verify-email/{token}', 'Auth\RegisterController@verify');
