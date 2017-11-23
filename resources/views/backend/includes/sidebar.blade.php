@@ -38,6 +38,21 @@
             <li><a href="{{url('admin/dashboardv2')}}"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Portfolio Options</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="{{url('admin/portfolio/contact')}}"><i class="fa fa-circle-o"></i> Contact</a></li>
+            <li><a href="{{url('admin/portfolio/education')}}"><i class="fa fa-circle-o"></i> Education</a></li>
+            <li><a href="{{url('admin/portfolio/experience')}}"><i class="fa fa-circle-o"></i> Experience</a></li>
+            <li><a href="{{url('admin/portfolio/expertise')}}"><i class="fa fa-circle-o"></i> Expertise</a></li>
+              <li><a href="{{url('admin/portfolio/skill')}}"><i class="fa fa-circle-o"></i> Skills</a></li>
+          </ul>
+        </li>
         <li class="users">
           <a href="{{url('admin/users')}}">
             <i class="fa fa-Users"></i> <span>User Management</span>

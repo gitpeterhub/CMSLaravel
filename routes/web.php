@@ -75,6 +75,17 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    $this->post('/get-users/', 'Backend\Admin\UserController@getAll');
    // $this->get('/users/{id}/edit', 'Backend\Admin\UserController@edit');
 
+   //for portfolio routes
+   Route::resource('portfolio/contact', 'Backend\Admin\Portfolio\ContactController');
+
+   Route::resource('portfolio/education', 'Backend\Admin\Portfolio\EducationController');
+
+   Route::resource('portfolio/experience', 'Backend\Admin\Portfolio\ExperienceController');
+
+   Route::resource('portfolio/expertise', 'Backend\Admin\Portfolio\ExpertiseController');
+
+   Route::resource('portfolio/skill', 'Backend\Admin\Portfolio\SkillController');
+
    //uses laravel's default logout routes
    
    $this->get('/logout', 'Auth\LoginController@logout')->name('logout');
