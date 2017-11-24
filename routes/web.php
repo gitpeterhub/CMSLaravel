@@ -76,7 +76,7 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    // $this->get('/users/{id}/edit', 'Backend\Admin\UserController@edit');
 
    //for portfolio routes
-   Route::resource('portfolio/contact', 'Backend\Admin\Portfolio\ContactController');
+   Route::resource('portfolio/about-me', 'Backend\Admin\Portfolio\AboutMeController');
 
    Route::resource('portfolio/education', 'Backend\Admin\Portfolio\EducationController');
 
@@ -85,6 +85,8 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    Route::resource('portfolio/expertise', 'Backend\Admin\Portfolio\ExpertiseController');
 
    Route::resource('portfolio/skill', 'Backend\Admin\Portfolio\SkillController');
+
+   Route::resource('portfolio/contact', 'Backend\Admin\Portfolio\ContactController');
 
    //uses laravel's default logout routes
    

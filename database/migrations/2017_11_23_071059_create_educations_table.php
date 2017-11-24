@@ -17,6 +17,7 @@ class CreateEducationsTable extends Migration
             $table->increments('id');
             $table->string('degree',50)->nullable();
             $table->string('major',50)->nullable();
+            $table->string('enrolled_year',10)->nullable();
             $table->string('graduation_year',10)->nullable();
             $table->string('institution',50)->nullable();
             $table->string('institution_address',50)->nullable();

@@ -46,11 +46,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{url('admin/portfolio/contact')}}"><i class="fa fa-circle-o"></i> Contact</a></li>
+            <li class="active"><a href="{{url('admin/portfolio/about-me')}}"><i class="fa fa-circle-o"></i> About Me</a></li>
             <li><a href="{{url('admin/portfolio/education')}}"><i class="fa fa-circle-o"></i> Education</a></li>
             <li><a href="{{url('admin/portfolio/experience')}}"><i class="fa fa-circle-o"></i> Experience</a></li>
             <li><a href="{{url('admin/portfolio/expertise')}}"><i class="fa fa-circle-o"></i> Expertise</a></li>
-              <li><a href="{{url('admin/portfolio/skill')}}"><i class="fa fa-circle-o"></i> Skills</a></li>
+            <li><a href="{{url('admin/portfolio/skill')}}"><i class="fa fa-circle-o"></i> Skills</a></li>
+            <li class="active"><a href="{{url('admin/portfolio/contact')}}"><i class="fa fa-circle-o"></i> Contacts</a></li>
           </ul>
         </li>
         <li class="users">

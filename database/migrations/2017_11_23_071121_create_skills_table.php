@@ -22,6 +22,9 @@ class CreateSkillsTable extends Migration
             $table->string('institution',50)->nullable();
             $table->string('board',50)->nullable();
             $table->string('score',10)->nullable();
+            $table->string('description')->nullable();
+            $table->tinyInteger('type')->nullable(); // skills ,training
+            $table->tinyInteger('order')->nullable();// listing order
             $table->timestamps();
         });
     }
