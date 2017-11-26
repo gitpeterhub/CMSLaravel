@@ -1,6 +1,6 @@
 @extends('backend.master-layout')
 @section('title')
-<title>AdminLTE 2 | Users</title>
+<title>AdminLTE 2 | Education</title>
 @endsection
 @section('styles')
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
@@ -11,12 +11,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Users
-        <small>13 New Users</small>
+        About Me
+        <small>13 unfilled fields</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">User Management</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Portfolio Options</a></li>
+        <li><a href="#"><i></i> Education</a></li>
+        <li class="active">Add Degree</li>
       </ol>
     </section>
 
@@ -41,20 +42,44 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="name">Full Name:</label>
-                      <input type="text" class="form-control" id="name" placeholder="Enter Your Full Name" name="name" value="" required="required">
+                      <label for="degree">Degree* :</label>
+                      <input type="text" class="form-control" id="degree" placeholder="Enter Your Full Degree" name="degree" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="email">Email:</label>
-                      <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email" value="" required="required">
+                      <label for="major">Major* :</label>
+                      <input type="text" class="form-control" id="major" placeholder="Enter Your Major" name="major" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label>Change Password</label>&nbsp;&nbsp;<input type="checkbox" id="checkbox">
-                    </div>                    
+                      <label for="enrolled_year">Enrolled Year:</label>
+                      <input type="text" class="form-control" id="enrolled_year" placeholder="Enter Your Enrolled Year" name="enrolled_year" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="graduation_year">Graduation Year:</label>
+                      <input type="text" class="form-control" id="graduation_year" placeholder="Enter Your Graduation Year" name="graduation_year" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="institution">Institution:</label>
+                      <input type="text" class="form-control" id="institution" placeholder="Enter Your Institution" name="institution" value="" required="required">
+                    </div>                                    
                     <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
-                    
+                    <div class="form-group">
+                      <label for="institution_address">Institution Address:</label>
+                      <input type="text" class="form-control" id="institution_address" placeholder="Enter Your Institution Address" name="institution_address" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="board_or_university">Board/University:</label>
+                      <input type="text" class="form-control" id="board_or_university" placeholder="Enter Your Board/University" name="board_or_university" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="score">Score:</label>
+                      <input type="text" class="form-control" id="Score" placeholder="Enter Your Score" name="Score" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="achievements">Achievements:</label>
+                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="" required="required">
+                    </div>
                   </div>
                 </div>
               </form>
