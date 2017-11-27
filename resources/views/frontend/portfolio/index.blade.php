@@ -8,13 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{asset('portfolio-assets/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('portfolio-assets/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{asset('portfolio-assets/assets/Owl/css/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{asset('portfolio-assets/assets/Owl/css/owl.theme.default.min.css')}}" rel="stylesheet">
     <link href="{{asset('portfolio-assets/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('portfolio-assets/css/animate.css')}}" rel="stylesheet">
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
     <header>
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top" id="navbar">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -42,15 +44,16 @@
             </div>
             <!-- /.container-fluid -->
         </nav>
+        <div class="clearfix"></div>
     </header>
     <section class="intro">
         <div class="container">
             <div class="content">
                 <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-6 wow slideInLeft">
-                        <img src="{{asset('portfolio-assets/images/23e8ad88ae744df0bd7f5221f3d67b0e.webp')}}">
+                    <div class="col-md-6 col-sm-6 col-xm-6 col-xs-12 wow slideInLeft img-col">
+                        <img src="{{asset('portfolio-assets/images/funny-profile-pictures.jpg')}}">
                     </div>
-                    <div class="col-md-6 col-sm-6 col-xs-6  bg-gray introduction wow slideInRight">
+                    <div class="col-md-6 col-sm-6 col-xm-6 col-xs-12  bg-gray introduction wow slideInRight">
                         <h3>John Doe <br><span class="text-uppercase font-15"><strong>Lawyer and Consultant </strong></span></h3>
                         <h4><strong>Phone: </strong><br> 9876543210</h4>
                         <h4><strong>Email: </strong><br> example@xyz.com</h4>
@@ -60,6 +63,7 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
     <section class="social-links">
         <div class="container">
@@ -80,6 +84,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
     <section id="experience" class="experience">
         <div class="title">
@@ -87,12 +92,12 @@
         </div>
         <div class="container rel-div">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="yr-div clearfix">
                         <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="exp-div">
                         <div class="dot hidden-xs wow fadeInUp"></div>
                         <h4 class="wow slideInRight">Company name</h4>
@@ -101,12 +106,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="yr-div clearfix">
                         <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="exp-div">
                         <div class="dot hidden-xs wow fadeInUp"></div>
                         <h4 class="wow slideInRight">Company name</h4>
@@ -115,6 +120,7 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
     <section id="education" class="education">
         <div class="title">
@@ -122,12 +128,12 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="yr-div clearfix">
                         <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="exp-div">
                         <div class="dot hidden-xs wow fadeInUp"></div>
                         <h4 class="wow slideInRight">Company name</h4>
@@ -136,12 +142,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="yr-div clearfix">
                         <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="exp-div">
                         <div class="dot hidden-xs wow fadeInUp"></div>
                         <h4 class="wow slideInRight">Company name</h4>
@@ -150,65 +156,88 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
+
     <section id="skills" class="skills">
         <div class="title">
             <h3>SKILLS</h3>
         </div>
+
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInLeft">
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInRight">
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInLeft">
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInRight">
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInLeft">
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInRight">
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
+
     <section id="expertise" class="expertise">
         <div class="title">
             <h3>EXPERTISE</h3>
         </div>
         <div class="container p-40">
-            <div class="row">
-                <div class="col-md-4">
+            <div class="owl-carousel owl-theme">
+                <div class="item">
                     <div class="expert">
                         <h4>Jquery</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="item">
                     <div class="expert">
                         <h4>Jquery</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="item">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                <div class="item">
                     <div class="expert">
                         <h4>Jquery</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -216,6 +245,7 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
     <section id="contact" class="contact">
         <div class="title">
@@ -223,25 +253,26 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6">
                     <div class="footer-form">
-                        <form class="wow fadeInUp">
+                        <div id="message-box" ></div>
+                        <form id="message-form" class="wow fadeInUp">
                             <div class="row">
                                 <div class="col-md-6 form-group">
-                                    <input type="text" class="form-control" placeholder="Name">
+                                    <input type="text" class="form-control" name="name" placeholder="Name">
                                 </div>
                                 <div class="col-md-6 form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <input type="text" class="form-control" placeholder="Subject">
+                                    <input type="text" name="subject" class="form-control" placeholder="Subject">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12 form-group">
-                                    <textarea class="form-control" placeholder="Message"></textarea>
+                                    <textarea class="form-control" name="message" placeholder="Message"></textarea>
                                 </div>
                             </div>
                             <div class="row">
@@ -252,7 +283,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6 b-l">
+                <div class="col-md-6 col-sm-6 b-l">
                     <div class="footer-contact">
                         <h4>John Doe <br><span class="text-uppercase font-15"><small>Lawyer and Consultant </small></span></h4>
                         <h5><strong>Phone: </strong><br> 9876543210</h5>
@@ -272,12 +303,15 @@
                 </div>
             </div>
         </div>
+        <div class="clearfix"></div>
     </section>
     <section class="copyright text-center">
         <span> 2017 &copy; John Doe</span>
     </section>
+    <div> <a href="#" class="scrollToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
     <script src="{{asset('portfolio-assets/js/jquery-3.2.1.min.js')}}"></script>
     <script src="{{asset('portfolio-assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('portfolio-assets/assets/Owl/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('portfolio-assets/js/custom.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script>
@@ -318,6 +352,35 @@
             });
 
     </script>
+
+    <script type="text/javascript">
+        $("form").on("submit", function (e) {
+
+            e.preventDefault();
+                console.log($("form").serialize())
+            $.ajax({
+                method:"POST",
+                url:"{{url("/portfolio/contact/")}}",
+                data:$("form").serialize()+"&_token={{csrf_token()}}",
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+
+                      /*  if(data.indexOf("Opps") != -1 ){*/
+                            $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        //}   
+                            $("form")[0].reset();
+                            $("form input[name=name]").focus();
+                  }
+
+        });
+
+
+    });
+    </script>
+
+
 </body>
 
 </html>

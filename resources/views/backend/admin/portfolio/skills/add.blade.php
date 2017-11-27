@@ -42,60 +42,44 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="company_name">Company Name* :</label>
-                      <input type="text" class="form-control" id="company_name" placeholder="Enter Your Full Company Name" name="company_name" value="" required="required">
+                      <label for="certificate_title">Certificate Title* :</label>
+                      <input type="text" class="form-control" id="certificate_title" placeholder="Enter Your Certificate Title" name="certificate_title" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="joined_date">Joined Date* :</label>
-                      <input type="date" class="form-control" id="joined_date" placeholder="Enter Your Joined Date" name="joined_date" value="" required="required">
+                      <label for="major">Major* :</label>
+                      <input type="text" class="form-control" id="major" placeholder="Enter Your Major" name="major" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="resigned_date">Resigned Date:</label>
-                      <input type="date" class="form-control" id="resigned_date" placeholder="Enter Your Resigned Date" name="resigned_date" value="" required="required">
+                      <label for="start_date">Start Date* :</label>
+                      <input type="date" class="form-control" id="start_date" placeholder="Enter Your Start Date" name="start_date" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="position">Position:</label>
-                      <input type="text" class="form-control" id="position" placeholder="Enter Your Position" name="position" value="" required="required">
+                      <label for="end_date">End Date:</label>
+                      <input type="date" class="form-control" id="end_date" placeholder="Enter Your End Date" name="end_date" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="about_job">About Job:</label>
-                      <input type="text" class="form-control" id="about_job" placeholder="Enter Your About Job" name="about_job" value="" required="required">
+                      <label for="institution">Institution:</label>
+                      <input type="text" class="form-control" id="institution" placeholder="Enter Your Institution" name="institution" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="duties">Duties:</label>
-                      <input type="text" class="form-control" id="duties" placeholder="Enter Your Duties" name="duties" value="" required="required">
-                    </div>
-                    <div class="form-group">
-                      <label for="projects">Projects:</label>
-                      <input type="text" class="form-control" id="projects" placeholder="Enter Your Projects" name="projects" value="" required="required">
+                      <label for="board">Board:</label>
+                      <input type="text" class="form-control" id="board" placeholder="Enter Your About Board" name="board" value="" required="required">
                     </div>
 
                     <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="company_email">Company Email:</label>
-                      <input type="email" class="form-control" id="company_email" placeholder="Enter Your Company Email" name="company_email" value="" required="required">
+                      <label for="score">Score:</label>
+                      <input type="text" class="form-control" id="score" placeholder="Enter Your Score" name="score" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="company_phone">Company Phone:</label>
-                      <input type="text" class="form-control" id="company_phone" placeholder="Enter Your Company Phone" name="company_phone" value="" required="required">
+                      <label for="description">Description:</label>
+                      <input type="text" class="form-control" id="description" placeholder="Enter Your Description" name="description" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="company_address">Company Address:</label>
-                      <input type="text" class="form-control" id="company_address" placeholder="Enter Your Company Address" name="company_address" value="" required="required">
-                    </div>
-                    <div class="form-group">
-                      <label for="company_websites">Company Websites:</label>
-                      <input type="text" class="form-control" id="company_websites" placeholder="Enter Your Company websites" name="company_websites" value="" required="required">
-                    </div>
-                    <div class="form-group">
-                      <label for="company_established">Company Established:</label>
-                      <input type="text" class="form-control" id="Company Established" placeholder="Enter Your Company Established" name="company_established" value="" required="required">
-                    </div>
-                    <div class="form-group">
-                      <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="" required="required">
+                      <label for="type">Type:</label>
+                      <input type="text" class="form-control" id="type" placeholder="Enter Your Certificate type" name="type" value="" required="required">
                     </div>
                   </div>
                 </div>

@@ -34,10 +34,12 @@
             </div>
             {{Session::forget('message')}}
           @endif
+
+          <div id="message-box"></div>
       <!-- row starts -->
         <div class="row">
             <div class="col-md-12">
-              <form action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{url('/admin/contact/')}}" method="POST" id="education">
                 {{csrf_field()}}
                 <div class="row">
                   <div class="col-md-6">
@@ -61,7 +63,6 @@
                       <label for="institution">Institution:</label>
                       <input type="text" class="form-control" id="institution" placeholder="Enter Your Institution" name="institution" value="" required="required">
                     </div>                                    
-                    <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
@@ -82,6 +83,11 @@
                     </div>
                   </div>
                 </div>
+                <div class="row" >
+                    <div class="col-md-4" >
+                      <button type="submit" class="btn btn-success">Create</button>
+                    </div>
+                  </div>
               </form>
             </div>
         </div>
@@ -95,9 +101,34 @@
 @section('scripts')
 
 <script>
+$('.treeview').siblings().removeClass('active');
+  $('.portfolio').addClass('active');
+  $('.education').siblings().removeClass('active');
+  $('.education').addClass('active');  
+  </script>
 
-  /*$('.treeview').siblings().removeClass('active');
-  $('.').addClass('active');*/
-  </script>  
+  <script type="text/javascript">
+        $("form").on("submit", function (e) {
+
+            e.preventDefault();
+                console.log($("form").serialize());
+            $.ajax({
+                method:"POST",
+                url:"{{url("/admin/portfolio/education/")}}",
+                data:$("form").serialize(),
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        $("#education")[0].reset();
+                        $("form input[name=degree]").focus();
+                  }
+
+        });
+
+
+    });
+    </script>  
 
 @endsection

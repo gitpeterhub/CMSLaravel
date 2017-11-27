@@ -34,54 +34,60 @@
             </div>
             {{Session::forget('message')}}
           @endif
+
+          <div id="message-box"></div>
       <!-- row starts -->
         <div class="row">
             <div class="col-md-12">
-              <form action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
+              <form action="{{url('/admin/contact/')}}" method="POST" id="education">
                 {{csrf_field()}}
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="degree">Degree* :</label>
-                      <input type="text" class="form-control" id="degree" placeholder="Enter Your Full Degree" name="degree" value="" required="required">
+                      <input type="text" class="form-control" id="degree" placeholder="Enter Your Full Degree" name="degree" value="{{$education->degree}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="major">Major* :</label>
-                      <input type="text" class="form-control" id="major" placeholder="Enter Your Major" name="major" value="" required="required">
+                      <input type="text" class="form-control" id="major" placeholder="Enter Your Major" name="major" value="{{$education->major}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="enrolled_year">Enrolled Year:</label>
-                      <input type="text" class="form-control" id="enrolled_year" placeholder="Enter Your Enrolled Year" name="enrolled_year" value="" required="required">
+                      <input type="text" class="form-control" id="enrolled_year" placeholder="Enter Your Enrolled Year" name="enrolled_year" value="{{$education->enrolled_year}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="graduation_year">Graduation Year:</label>
-                      <input type="text" class="form-control" id="graduation_year" placeholder="Enter Your Graduation Year" name="graduation_year" value="" required="required">
+                      <input type="text" class="form-control" id="graduation_year" placeholder="Enter Your Graduation Year" name="graduation_year" value="{{$education->graduation_year}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="institution">Institution:</label>
-                      <input type="text" class="form-control" id="institution" placeholder="Enter Your Institution" name="institution" value="" required="required">
+                      <input type="text" class="form-control" id="institution" placeholder="Enter Your Institution" name="institution" value="{{$education->institution}}" required="required">
                     </div>                                    
-                    <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="institution_address">Institution Address:</label>
-                      <input type="text" class="form-control" id="institution_address" placeholder="Enter Your Institution Address" name="institution_address" value="" required="required">
+                      <input type="text" class="form-control" id="institution_address" placeholder="Enter Your Institution Address" name="institution_address" value="{{$education->institution_address}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="board_or_university">Board/University:</label>
-                      <input type="text" class="form-control" id="board_or_university" placeholder="Enter Your Board/University" name="board_or_university" value="" required="required">
+                      <input type="text" class="form-control" id="board_or_university" placeholder="Enter Your Board/University" name="board_or_university" value="{{$education->board_or_university}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="score">Score:</label>
-                      <input type="text" class="form-control" id="Score" placeholder="Enter Your Score" name="Score" value="" required="required">
+                      <input type="text" class="form-control" id="Score" placeholder="Enter Your Score" name="Score" value="{{$education->score}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="" required="required">
+                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="{{$education->achievements}}" required="required">
                     </div>
                   </div>
                 </div>
+                <div class="row" >
+                    <div class="col-md-4" >
+                      <button type="submit" class="btn btn-success">Update</button>
+                    </div>
+                  </div>
               </form>
             </div>
         </div>
@@ -95,9 +101,34 @@
 @section('scripts')
 
 <script>
+$('.treeview').siblings().removeClass('active');
+  $('.portfolio').addClass('active');
+  $('.education').siblings().removeClass('active');
+  $('.education').addClass('active');  
+  </script>
 
-  /*$('.treeview').siblings().removeClass('active');
-  $('.').addClass('active');*/
-  </script>  
+  <script type="text/javascript">
+        $("form").on("submit", function (e) {
+
+            e.preventDefault();
+                console.log($("form").serialize());
+            $.ajax({
+                method:"PUT",
+                url:"{{url("/admin/portfolio/education/".$education->id)}}",
+                data:$("form").serialize(),
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        $("#education")[0].reset();
+                        $("form input[name=degree]").focus();
+                  }
+
+        });
+
+
+    });
+    </script>  
 
 @endsection

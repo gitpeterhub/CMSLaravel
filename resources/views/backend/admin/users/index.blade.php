@@ -76,8 +76,6 @@
             </div>
         </div>
         <!-- Datatable row ends -->
-      </div>
-      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>

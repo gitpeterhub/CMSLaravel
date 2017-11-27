@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Backend\Admin\Portfolio;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\EducationRepository;
 
 class EducationController extends Controller
 {
+
+    private $educationRepo;
+
+    function __construct(EducationRepository $educationRepo){
+
+        $this->educationRepo = $educationRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,7 @@ class EducationController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.portfolio.education.add');
+        return view('backend.admin.portfolio.education.list');
     }
 
     /**
@@ -24,7 +32,7 @@ class EducationController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.portfolio.education.add');
     }
 
     /**
@@ -34,8 +42,20 @@ class EducationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {       
+    
+            $data = $request->all();
+            unset($data['_token']);
+
+            if ($this->educationRepo->create($data)) {
+                $response['message'] = 'Got your message! I will contact you soon.';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
+
+            return $response;
     }
 
     /**
@@ -46,7 +66,7 @@ class EducationController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -56,8 +76,9 @@ class EducationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   
+        $education = $this->educationRepo->find($id);
+        return view('backend.admin.portfolio.education.edit',compact('education'));
     }
 
     /**
@@ -69,7 +90,18 @@ class EducationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        unset($data['_token']);
+
+       if ($this->educationRepo->update($data,$id)) {
+                $response['message'] = 'Got your message! I will contact you soon.';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
+
+            return $response;
     }
 
     /**
@@ -80,6 +112,16 @@ class EducationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->educationRepo->delete($id);
+
+       Session::flash('message','User deleted successfully!');
+       Session::flash('alert-class', 'alert-success');
+
+        return back();
+    }
+
+    public function getList(Request $request){
+
+        $this->educationRepo->getAll($request);
     }
 }

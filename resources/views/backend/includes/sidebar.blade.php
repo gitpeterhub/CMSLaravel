@@ -38,7 +38,7 @@
             <li><a href="{{url('admin/dashboardv2')}}"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview portfolio">
           <a href="#">
             <i class="fa fa-dashboard"></i> <span>Portfolio Options</span>
             <span class="pull-right-container">
@@ -46,12 +46,12 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="active"><a href="{{url('admin/portfolio/about-me')}}"><i class="fa fa-circle-o"></i> About Me</a></li>
-            <li><a href="{{url('admin/portfolio/education')}}"><i class="fa fa-circle-o"></i> Education</a></li>
-            <li><a href="{{url('admin/portfolio/experience')}}"><i class="fa fa-circle-o"></i> Experience</a></li>
-            <li><a href="{{url('admin/portfolio/expertise')}}"><i class="fa fa-circle-o"></i> Expertise</a></li>
-            <li><a href="{{url('admin/portfolio/skill')}}"><i class="fa fa-circle-o"></i> Skills</a></li>
-            <li class="active"><a href="{{url('admin/portfolio/contact')}}"><i class="fa fa-circle-o"></i> Contacts</a></li>
+            <li class="about-me"><a href="{{url('admin/portfolio/about-me')}}"><i class="fa fa-circle-o"></i> About Me</a></li>
+            <li class="education" ><a href="{{url('admin/portfolio/education')}}"><i class="fa fa-circle-o"></i> Education</a></li>
+            <li class="experience" ><a href="{{url('admin/portfolio/experience')}}"><i class="fa fa-circle-o"></i> Experience</a></li>
+            <li class="expertise" ><a href="{{url('admin/portfolio/expertise')}}"><i class="fa fa-circle-o"></i> Expertise</a></li>
+            <li class="skills" ><a href="{{url('admin/portfolio/skill')}}"><i class="fa fa-circle-o"></i> Skills</a></li>
+            <li class="contacts"><a href="{{url('admin/portfolio/contact')}}"><i class="fa fa-circle-o"></i> Contacts</a></li>
           </ul>
         </li>
         <li class="users">

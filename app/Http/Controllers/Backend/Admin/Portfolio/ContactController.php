@@ -4,17 +4,27 @@ namespace App\Http\Controllers\Backend\Admin\Portfolio;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\ContactRepository;
 
 class ContactController extends Controller
 {
+
+    private $contactRepo;
+
+    function __construct(ContactRepository $contactRepo){
+
+        $this->contactRepo = $contactRepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('backend.admin.portfolio.contact.add');
+    {   
+
+        return view('backend.admin.portfolio.contact.list');
     }
 
     /**
@@ -35,7 +45,19 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+            $data = $request->all();
+            unset($data['_token']);
+            if ($this->contactRepo->create($data)) {
+                $response['message'] = 'Got your message! I will contact you soon.';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
+
+            
+
+             return $response;
     }
 
     /**
@@ -81,5 +103,11 @@ class ContactController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function getList(Request $request){
+
+        $this->contactRepo->getAll($request);
     }
 }

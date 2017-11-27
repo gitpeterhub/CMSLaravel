@@ -35,7 +35,15 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+            unset($data['_token']);
+            if ($this->contactRepo->create($data)) {
+                $response['message'] = 'Got your message! I will contact you soon.';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
     }
 
     /**

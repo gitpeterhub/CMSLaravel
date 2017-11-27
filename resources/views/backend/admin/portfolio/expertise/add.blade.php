@@ -1,6 +1,6 @@
 @extends('backend.master-layout')
 @section('title')
-<title>AdminLTE 2 | Users</title>
+<title>AdminLTE 2 | Experiences</title>
 @endsection
 @section('styles')
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
@@ -11,12 +11,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Users
-        <small>13 New Users</small>
+        About Me
+        <small>13 unfilled fields</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">User Management</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Portfolio Options</a></li>
+        <li><a href="#"><i></i> Experiences</a></li>
+        <li class="active">Add Experience</li>
       </ol>
     </section>
 
@@ -41,16 +42,21 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <label for="name">Full Name:</label>
-                      <input type="text" class="form-control" id="name" placeholder="Enter Your Full Name" name="name" value="" required="required">
+                      <label for="field_of_expertise">Field Of Expertise* :</label>
+                      <input type="text" class="form-control" id="company_name" placeholder="Enter Your Full Field Of Expertise" name="field_of_expertise" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="email">Email:</label>
-                      <input type="text" class="form-control" id="email" placeholder="Enter Your Email" name="email" value="" required="required">
+                      <label for="research_topics">Research Topics:</label>
+                      <input type="text" class="form-control" id="research_topics" placeholder="Enter Your Research Topics" name="research_topics" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label>Change Password</label>&nbsp;&nbsp;<input type="checkbox" id="checkbox">
-                    </div>                    
+                      <label for="expertise_details">Expertise Details* :</label>
+                      <input type="text" class="form-control" id="expertise_details" placeholder="Enter Your Expertise Details" name="expertise_details" value="" required="required">
+                    </div>
+                    <div class="form-group">
+                      <label for="achievements">Achievements:</label>
+                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your achievements" name="achievements" value="" required="required">
+                    </div>
                     <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">

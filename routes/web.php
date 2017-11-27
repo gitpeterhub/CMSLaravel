@@ -59,6 +59,8 @@ Route::post('login', 'Auth\LoginController@login');
 
 //Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
 
+Route::post('portfolio/contact/store', 'Backend\Admin\Portfolio\ContactController@store');
+
 Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 {
 	//Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);
@@ -79,14 +81,19 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    Route::resource('portfolio/about-me', 'Backend\Admin\Portfolio\AboutMeController');
 
    Route::resource('portfolio/education', 'Backend\Admin\Portfolio\EducationController');
+   Route::post('portfolio/education/list', 'Backend\Admin\Portfolio\EducationController@getList');
 
    Route::resource('portfolio/experience', 'Backend\Admin\Portfolio\ExperienceController');
+   Route::post('portfolio/experience/list', 'Backend\Admin\Portfolio\ExperienceController@getList');
 
    Route::resource('portfolio/expertise', 'Backend\Admin\Portfolio\ExpertiseController');
+   Route::post('portfolio/expertise/list', 'Backend\Admin\Portfolio\ExpertiseController@getList');
 
    Route::resource('portfolio/skill', 'Backend\Admin\Portfolio\SkillController');
+   Route::post('portfolio/skill/list', 'Backend\Admin\Portfolio\SkillController@getList');
 
    Route::resource('portfolio/contact', 'Backend\Admin\Portfolio\ContactController');
+   Route::post('portfolio/contact/list', 'Backend\Admin\Portfolio\ContactController@getList');
 
    //uses laravel's default logout routes
    

@@ -112,39 +112,9 @@
   })
   </script>
 
-
-
-<!-- DataTables -->
-<script src="{{asset('bower_components/datatables.net/js/jquery.dataTables.min.js')}}">
-</script>
-<script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- script for datatable plugin -->
 <script type="text/javascript">
-                    $(document).ready(function () {
-                         
-                        $('#users').DataTable({
-                            "columns": [
-                                {"data": "id"},
-                                {"data": "name"},
-                                {"data": "email"},
-                                {"data": "action"}
-                            ],
-                            "columnDefs": [ {
-                                  "targets": [ 3 ],
-                                  "orderable": false
-                                } ],
-                            "processing": true,
-                            "serverSide": true,
-                            "ajax":{
-                                     "url": "{{url('admin/users')}}",
-                                     "dataType": "json",
-                                     "type": "POST",
-                                     "data":{ _token: "{{csrf_token()}}"}
-                                   },
-                        });
-
-                    });
-
+                    
         //preview photo before submit
        $("#photo").on("change", function(){
           console.log('hey');
