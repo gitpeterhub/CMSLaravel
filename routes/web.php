@@ -82,15 +82,19 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 
    Route::resource('portfolio/education', 'Backend\Admin\Portfolio\EducationController');
    Route::post('portfolio/education/list', 'Backend\Admin\Portfolio\EducationController@getList');
+   Route::get('portfolio/education/delete/{id}', 'Backend\Admin\Portfolio\EducationController@destroy');
 
    Route::resource('portfolio/experience', 'Backend\Admin\Portfolio\ExperienceController');
    Route::post('portfolio/experience/list', 'Backend\Admin\Portfolio\ExperienceController@getList');
+   Route::get('portfolio/experience/{id}/delete', 'Backend\Admin\Portfolio\ExperienceController@destroy');
 
    Route::resource('portfolio/expertise', 'Backend\Admin\Portfolio\ExpertiseController');
    Route::post('portfolio/expertise/list', 'Backend\Admin\Portfolio\ExpertiseController@getList');
+   Route::get('portfolio/expertise/{id}/delete', 'Backend\Admin\Portfolio\ExpertiseController@destroy');
 
    Route::resource('portfolio/skill', 'Backend\Admin\Portfolio\SkillController');
    Route::post('portfolio/skill/list', 'Backend\Admin\Portfolio\SkillController@getList');
+   Route::get('portfolio/skill/{id}/delete', 'Backend\Admin\Portfolio\SkillController@destroy');
 
    Route::resource('portfolio/contact', 'Backend\Admin\Portfolio\ContactController');
    Route::post('portfolio/contact/list', 'Backend\Admin\Portfolio\ContactController@getList');

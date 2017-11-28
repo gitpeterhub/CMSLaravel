@@ -37,7 +37,8 @@
       <!-- row starts -->
         <div class="row">
             <div class="col-md-12">
-              <form action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
+              <div id="message-box"></div>
+              <form id="experience" action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                   <div class="col-md-6">
@@ -69,8 +70,6 @@
                       <label for="projects">Projects:</label>
                       <input type="text" class="form-control" id="projects" placeholder="Enter Your Projects" name="projects" value="" required="required">
                     </div>
-
-                    <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
@@ -91,13 +90,16 @@
                     </div>
                     <div class="form-group">
                       <label for="company_established">Company Established:</label>
-                      <input type="text" class="form-control" id="Company Established" placeholder="Enter Your Company Established" name="company_established" value="" required="required">
+                      <input type="date" class="form-control" id="Company Established" placeholder="Enter Your Company Established" name="company_established" value="" required="required">
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
                       <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="" required="required">
                     </div>
                   </div>
+                </div>
+                <div class="row" >
+                  <div class="col-md-4" ><button type="submit" class="btn btn-success">Add Experience</button></div>
                 </div>
               </form>
             </div>
@@ -113,8 +115,34 @@
 
 <script>
 
-  /*$('.treeview').siblings().removeClass('active');
-  $('.').addClass('active');*/
+  $('.treeview').siblings().removeClass('active');
+  $('.portfolio').addClass('active');
+  $('.experience').siblings().removeClass('active');
+  $('.experience').addClass('active');  
   </script>  
+
+  <script type="text/javascript">
+        $("#experience").on("submit", function (e) {
+
+            e.preventDefault();
+                console.log($("#experience").serialize());
+            $.ajax({
+                method:"POST",
+                url:"{{url("/admin/portfolio/experience/")}}",
+                data:$("#experience").serialize(),
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        $("#experience")[0].reset();
+                        $("form input[name=degree]").focus();
+                  }
+
+        });
+
+
+    });
+    </script>  
 
 @endsection

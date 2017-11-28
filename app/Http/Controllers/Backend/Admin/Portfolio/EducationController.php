@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Admin\Portfolio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\EducationRepository;
+use Session;
 
 class EducationController extends Controller
 {
@@ -114,7 +115,7 @@ class EducationController extends Controller
     {
         $this->educationRepo->delete($id);
 
-       Session::flash('message','User deleted successfully!');
+       Session::flash('message','Record deleted successfully!');
        Session::flash('alert-class', 'alert-success');
 
         return back();

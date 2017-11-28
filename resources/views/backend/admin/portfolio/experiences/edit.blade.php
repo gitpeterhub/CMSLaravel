@@ -37,67 +37,69 @@
       <!-- row starts -->
         <div class="row">
             <div class="col-md-12">
-              <form action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
+              <div id="message-box"></div>
+              <form id="experience" action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="company_name">Company Name* :</label>
-                      <input type="text" class="form-control" id="company_name" placeholder="Enter Your Full Company Name" name="company_name" value="" required="required">
+                      <input type="text" class="form-control" id="company_name" placeholder="Enter Your Full Company Name" name="company_name" value="{{$experience->company_name}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="joined_date">Joined Date* :</label>
-                      <input type="date" class="form-control" id="joined_date" placeholder="Enter Your Joined Date" name="joined_date" value="" required="required">
+                      <input type="date" class="form-control" id="joined_date" placeholder="Enter Your Joined Date" name="joined_date" value="{{$experience->joined_date}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="resigned_date">Resigned Date:</label>
-                      <input type="date" class="form-control" id="resigned_date" placeholder="Enter Your Resigned Date" name="resigned_date" value="" required="required">
+                      <input type="date" class="form-control" id="resigned_date" placeholder="Enter Your Resigned Date" name="resigned_date" value="{{$experience->resigned_date}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="position">Position:</label>
-                      <input type="text" class="form-control" id="position" placeholder="Enter Your Position" name="position" value="" required="required">
+                      <input type="text" class="form-control" id="position" placeholder="Enter Your Position" name="position" value="{{$experience->position}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="about_job">About Job:</label>
-                      <input type="text" class="form-control" id="about_job" placeholder="Enter Your About Job" name="about_job" value="" required="required">
+                      <input type="text" class="form-control" id="about_job" placeholder="Enter Your About Job" name="about_job" value="{{$experience->about_job}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="duties">Duties:</label>
-                      <input type="text" class="form-control" id="duties" placeholder="Enter Your Duties" name="duties" value="" required="required">
+                      <input type="text" class="form-control" id="duties" placeholder="Enter Your Duties" name="duties" value="{{$experience->duties}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="projects">Projects:</label>
-                      <input type="text" class="form-control" id="projects" placeholder="Enter Your Projects" name="projects" value="" required="required">
+                      <input type="text" class="form-control" id="projects" placeholder="Enter Your Projects" name="projects" value="{{$experience->projects}}" required="required">
                     </div>
-
-                    <button type="submit" class="btn btn-success">Update</button>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <label for="company_email">Company Email:</label>
-                      <input type="email" class="form-control" id="company_email" placeholder="Enter Your Company Email" name="company_email" value="" required="required">
+                      <input type="email" class="form-control" id="company_email" placeholder="Enter Your Company Email" name="company_email" value="{{$experience->company_email}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="company_phone">Company Phone:</label>
-                      <input type="text" class="form-control" id="company_phone" placeholder="Enter Your Company Phone" name="company_phone" value="" required="required">
+                      <input type="text" class="form-control" id="company_phone" placeholder="Enter Your Company Phone" name="company_phone" value="{{$experience->company_phone}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="company_address">Company Address:</label>
-                      <input type="text" class="form-control" id="company_address" placeholder="Enter Your Company Address" name="company_address" value="" required="required">
+                      <input type="text" class="form-control" id="company_address" placeholder="Enter Your Company Address" name="company_address" value="{{$experience->company_address}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="company_websites">Company Websites:</label>
-                      <input type="text" class="form-control" id="company_websites" placeholder="Enter Your Company websites" name="company_websites" value="" required="required">
+                      <input type="text" class="form-control" id="company_websites" placeholder="Enter Your Company websites" name="company_websites" value="{{$experience->company_websites}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="company_established">Company Established:</label>
-                      <input type="text" class="form-control" id="Company Established" placeholder="Enter Your Company Established" name="company_established" value="" required="required">
+                      <input type="date" class="form-control" id="Company Established" placeholder="Enter Your Company Established" name="company_established" value="{{$experience->company_established}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="" required="required">
+                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="{{$experience->achievements}}" required="required">
                     </div>
                   </div>
+                </div>
+                <div class="row" >
+                  <div class="col-md-4" ><button type="submit" class="btn btn-success">Update Experience</button></div>
                 </div>
               </form>
             </div>
@@ -113,8 +115,34 @@
 
 <script>
 
-  /*$('.treeview').siblings().removeClass('active');
-  $('.').addClass('active');*/
+  $('.treeview').siblings().removeClass('active');
+  $('.portfolio').addClass('active');
+  $('.experience').siblings().removeClass('active');
+  $('.experience').addClass('active');  
   </script>  
+
+  <script type="text/javascript">
+        $("#experience").on("submit", function (e) {
+
+            e.preventDefault();
+                console.log($("#experience").serialize());
+            $.ajax({
+                method:"PUT",
+                url:"{{url("/admin/portfolio/experience/".$experience->id)}}",
+                data:$("#experience").serialize(),
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        //$("#experience")[0].reset();
+                        $("form input[name=degree]").focus();
+                  }
+
+        });
+
+
+    });
+    </script>  
 
 @endsection

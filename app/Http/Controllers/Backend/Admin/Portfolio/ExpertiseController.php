@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Backend\Admin\Portfolio;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\ExpertiseRepository;
+use Session;
 
 class ExpertiseController extends Controller
 {
+
+    private $expertiseRepo;
+
+    function __construct(ExpertiseRepository $expertiseRepo){
+
+        $this->expertiseRepo = $expertiseRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,7 @@ class ExpertiseController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.portfolio.expertise.add');
+        return view('backend.admin.portfolio.expertise.list');
     }
 
     /**
@@ -24,7 +33,7 @@ class ExpertiseController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.portfolio.expertise.add');
     }
 
     /**
@@ -37,13 +46,15 @@ class ExpertiseController extends Controller
     {
         $data = $request->all();
             unset($data['_token']);
-            if ($this->contactRepo->create($data)) {
-                $response['message'] = 'Got your message! I will contact you soon.';
+            if ($this->expertiseRepo->create($data)) {
+                $response['message'] = 'Expertise updated successfully!';
                 $response['alert-class'] = 'alert-success';
             }else{
                 $response['message'] = 'Opps!Something went wrong.Please,try again later.';
                 $response['alert-class'] = 'alert-danger';
             }
+
+            return $response;
     }
 
     /**
@@ -65,7 +76,8 @@ class ExpertiseController extends Controller
      */
     public function edit($id)
     {
-        //
+        $expertise = $this->expertiseRepo->find($id);
+        return view('backend.admin.portfolio.expertise.edit',compact('expertise'));
     }
 
     /**
@@ -77,7 +89,18 @@ class ExpertiseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        unset($data['_token']);
+
+       if ($this->expertiseRepo->update($data,$id)) {
+                $response['message'] = 'Expertise updated successfully!';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
+
+            return $response;
     }
 
     /**
@@ -88,6 +111,16 @@ class ExpertiseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->expertiseRepo->delete($id);
+
+       Session::flash('message','Expertise deleted successfully!');
+       Session::flash('alert-class', 'alert-success');
+
+        return back();
+    }
+
+    public function getList(Request $request){
+
+        $this->expertiseRepo->getAll($request);
     }
 }

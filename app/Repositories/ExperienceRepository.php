@@ -6,7 +6,7 @@ namespace App\Repositories;
 use App\Repositories\Eloquent\Repository;
 use DB;
 
-class EducationRepository extends Repository {
+class ExperienceRepository extends Repository {
 
 
     /**
@@ -16,7 +16,7 @@ class EducationRepository extends Repository {
      */
     public function model()
     {
-        return 'App\Models\Education';
+        return 'App\Models\Experience';
     }
 
 
@@ -25,15 +25,16 @@ class EducationRepository extends Repository {
 
         $columns = array( 
                             0 =>'id', 
-                            1 =>'degree',
-                            2 =>'major',
-                            3 =>'graduation_year',
-                            4 =>'board_or_university',
-                            5 =>'action',
+                            1 =>'company_name',
+                            2 =>'joined_date',
+                            3 =>'resigned_date',
+                            4 =>'position',
+                            5 =>'duties',
+                            6 =>'action',
                             
                         );
   
-        $totalData = DB::select('SELECT COUNT(*) AS rowCount FROM contacts');
+        $totalData = DB::select('SELECT COUNT(*) AS rowCount FROM experiences');
         $totalData = $totalData[0]->rowCount;
             
         $totalFiltered = $totalData; 
@@ -45,7 +46,7 @@ class EducationRepository extends Repository {
             
         if(empty($request->input('search.value')))
         {            
-            $educations = $this->makeModel()->offset($start)
+            $experiences = $this->makeModel()->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
                          ->get();
@@ -53,30 +54,31 @@ class EducationRepository extends Repository {
         else {
             $search = $request->input('search.value'); 
 
-            $educations =  $this->makeModel()->where('id','LIKE',"%{$search}%")
-                            ->orWhere('name', 'LIKE',"%{$search}%")
+            $experiences =  $this->makeModel()->where('id','LIKE',"%{$search}%")
+                            ->orWhere('company_name', 'LIKE',"%{$search}%")
                             ->offset($start)
                             ->limit($limit)
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered = $contacts->count();
+            $totalFiltered = $experiences->count();
         }
 
         $data = array();
-        if(!empty($educations))
+        if(!empty($experiences))
         {
-            foreach ($educations as $education)
+            foreach ($experiences as $experience)
             {
                 /*$show =  route('posts.show',$user->id);
                 $edit =  route('posts.edit',$user->id);*/
                 //$nestedData['image'] = '<td class="text-center"><img src="storage/user/'.$user->image.'.jpg" class="user-img"></td>';
-                $nestedData['id'] = $education->id;
-                $nestedData['degree'] = $education->degree;
-                $nestedData['major'] = $education->major;
-                $nestedData['graduation_year'] = $education->graduation_year;
-                $nestedData['board_or_university'] = $education->board_or_university;
-                $nestedData['action'] = '<a href="/admin/portfolio/education'.$education->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="/admin/portfolio/education'.$education->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['id'] = $experience->id;
+                $nestedData['company_name'] = $experience->company_name;
+                $nestedData['joined_date'] = $experience->joined_date;
+                $nestedData['resigned_date'] = $experience->resigned_date;
+                $nestedData['position'] = $experience->position;
+                $nestedData['duties'] = $experience->duties;
+                $nestedData['action'] = '<a href="/admin/portfolio/experience/'.$experience->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="/admin/portfolio/experience/'.$experience->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }

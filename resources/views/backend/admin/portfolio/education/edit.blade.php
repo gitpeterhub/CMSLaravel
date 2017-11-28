@@ -108,20 +108,20 @@ $('.treeview').siblings().removeClass('active');
   </script>
 
   <script type="text/javascript">
-        $("form").on("submit", function (e) {
+        $("#education").on("submit", function (e) {
 
             e.preventDefault();
-                console.log($("form").serialize());
+                console.log($("#education").serialize());
             $.ajax({
                 method:"PUT",
                 url:"{{url("/admin/portfolio/education/".$education->id)}}",
-                data:$("form").serialize(),
+                data:$("#education").serialize(),
                 success: function ($response) {
                     console.log($response);
 
                     $("#message-box").empty();
                      $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
-                        $("#education")[0].reset();
+                        //$("#education")[0].reset();
                         $("form input[name=degree]").focus();
                   }
 

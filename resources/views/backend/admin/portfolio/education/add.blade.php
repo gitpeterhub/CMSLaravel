@@ -75,7 +75,7 @@
                     </div>
                     <div class="form-group">
                       <label for="score">Score:</label>
-                      <input type="text" class="form-control" id="Score" placeholder="Enter Your Score" name="Score" value="" required="required">
+                      <input type="text" class="form-control" id="score" placeholder="Enter Your Score" name="score" value="" required="required">
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>

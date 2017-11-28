@@ -46,7 +46,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="about-me"><a href="{{url('admin/portfolio/about-me')}}"><i class="fa fa-circle-o"></i> About Me</a></li>
+            <li class="about_me"><a href="{{url('admin/portfolio/about-me/create')}}"><i class="fa fa-circle-o"></i> About Me</a></li>
             <li class="education" ><a href="{{url('admin/portfolio/education')}}"><i class="fa fa-circle-o"></i> Education</a></li>
             <li class="experience" ><a href="{{url('admin/portfolio/experience')}}"><i class="fa fa-circle-o"></i> Experience</a></li>
             <li class="expertise" ><a href="{{url('admin/portfolio/expertise')}}"><i class="fa fa-circle-o"></i> Expertise</a></li>

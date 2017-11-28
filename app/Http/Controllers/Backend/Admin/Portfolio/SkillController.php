@@ -4,9 +4,18 @@ namespace App\Http\Controllers\Backend\Admin\Portfolio;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Repositories\SkillRepository;
+use Session;
 
 class SkillController extends Controller
 {
+
+    private $skillRepo;
+
+    function __construct(SkillRepository $skillRepo){
+
+        $this->skillRepo = $skillRepo;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +23,7 @@ class SkillController extends Controller
      */
     public function index()
     {
-        return view('backend.admin.portfolio.skills.add');
+        return view('backend.admin.portfolio.skills.list');
     }
 
     /**
@@ -24,7 +33,7 @@ class SkillController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.portfolio.skills.add');
     }
 
     /**
@@ -37,13 +46,15 @@ class SkillController extends Controller
     {
         $data = $request->all();
             unset($data['_token']);
-            if ($this->contactRepo->create($data)) {
-                $response['message'] = 'Got your message! I will contact you soon.';
+            if ($this->skillRepo->create($data)) {
+                $response['message'] = 'Skill added successfully!';
                 $response['alert-class'] = 'alert-success';
             }else{
                 $response['message'] = 'Opps!Something went wrong.Please,try again later.';
                 $response['alert-class'] = 'alert-danger';
             }
+
+            return $response;
     }
 
     /**
@@ -65,7 +76,8 @@ class SkillController extends Controller
      */
     public function edit($id)
     {
-        //
+        $skill = $this->skillRepo->find($id);
+        return view('backend.admin.portfolio.skills.edit',compact('skill'));
     }
 
     /**
@@ -77,7 +89,18 @@ class SkillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        unset($data['_token']);
+
+       if ($this->skillRepo->update($data,$id)) {
+                $response['message'] = 'Skill updated successfully!';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
+
+            return $response;
     }
 
     /**
@@ -88,6 +111,16 @@ class SkillController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->skillRepo->delete($id);
+
+       Session::flash('message','Skill deleted successfully!');
+       Session::flash('alert-class', 'alert-success');
+
+        return back();
+    }
+
+    public function getList(Request $request){
+
+        $this->skillRepo->getAll($request);
     }
 }

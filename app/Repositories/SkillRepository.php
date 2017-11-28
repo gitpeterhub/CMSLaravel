@@ -6,7 +6,7 @@ namespace App\Repositories;
 use App\Repositories\Eloquent\Repository;
 use DB;
 
-class EducationRepository extends Repository {
+class SkillRepository extends Repository {
 
 
     /**
@@ -16,7 +16,7 @@ class EducationRepository extends Repository {
      */
     public function model()
     {
-        return 'App\Models\Education';
+        return 'App\Models\Skill';
     }
 
 
@@ -25,15 +25,16 @@ class EducationRepository extends Repository {
 
         $columns = array( 
                             0 =>'id', 
-                            1 =>'degree',
+                            1 =>'certificate_title',
                             2 =>'major',
-                            3 =>'graduation_year',
-                            4 =>'board_or_university',
-                            5 =>'action',
+                            3 =>'start_date',
+                            4 =>'end_date',
+                            5 =>'institution',
+                            6 =>'action',
                             
                         );
   
-        $totalData = DB::select('SELECT COUNT(*) AS rowCount FROM contacts');
+        $totalData = DB::select('SELECT COUNT(*) AS rowCount FROM skills');
         $totalData = $totalData[0]->rowCount;
             
         $totalFiltered = $totalData; 
@@ -45,7 +46,7 @@ class EducationRepository extends Repository {
             
         if(empty($request->input('search.value')))
         {            
-            $educations = $this->makeModel()->offset($start)
+            $skills = $this->makeModel()->offset($start)
                          ->limit($limit)
                          ->orderBy($order,$dir)
                          ->get();
@@ -53,30 +54,31 @@ class EducationRepository extends Repository {
         else {
             $search = $request->input('search.value'); 
 
-            $educations =  $this->makeModel()->where('id','LIKE',"%{$search}%")
-                            ->orWhere('name', 'LIKE',"%{$search}%")
+            $skills =  $this->makeModel()->where('id','LIKE',"%{$search}%")
+                            ->orWhere('certificate_title', 'LIKE',"%{$search}%")
                             ->offset($start)
                             ->limit($limit)
                             ->orderBy($order,$dir)
                             ->get();
 
-            $totalFiltered = $contacts->count();
+            $totalFiltered = $skills->count();
         }
 
         $data = array();
-        if(!empty($educations))
+        if(!empty($skills))
         {
-            foreach ($educations as $education)
+            foreach ($skills as $skill)
             {
                 /*$show =  route('posts.show',$user->id);
                 $edit =  route('posts.edit',$user->id);*/
                 //$nestedData['image'] = '<td class="text-center"><img src="storage/user/'.$user->image.'.jpg" class="user-img"></td>';
-                $nestedData['id'] = $education->id;
-                $nestedData['degree'] = $education->degree;
-                $nestedData['major'] = $education->major;
-                $nestedData['graduation_year'] = $education->graduation_year;
-                $nestedData['board_or_university'] = $education->board_or_university;
-                $nestedData['action'] = '<a href="/admin/portfolio/education'.$education->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="/admin/portfolio/education'.$education->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['id'] = $skill->id;
+                $nestedData['certificate_title'] = $skill->certificate_title;
+                $nestedData['major'] = $skill->major;
+                $nestedData['start_date'] = $skill->start_date;
+                $nestedData['end_date'] = $skill->end_date;
+                $nestedData['institution'] = $skill->institution;
+                $nestedData['action'] = '<a href="/admin/portfolio/skill/'.$skill->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="/admin/portfolio/skill/'.$skill->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }
