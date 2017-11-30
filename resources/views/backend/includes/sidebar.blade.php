@@ -214,7 +214,7 @@
             <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
           </ul>
         </li> -->
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-globe"></i> <span>My Website</span></a></li>
+        <li><a  target="_blank" href="{{url('/')}}"><i class="fa fa-globe"></i> <span>My Website</span></a></li>
         <!-- <li class="header">LABELS</li>
         <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
         <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>

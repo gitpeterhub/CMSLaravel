@@ -45,8 +45,23 @@ class AboutMeController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        unset($data['_token']);
+        
+        //first check for photo
+        $data=[];
+        if ($request->hasFile('photo')){
+
+                  if (file_exists(public_path() . '/uploads/thumbnails/' . $request['prev_photo'])) {
+
+                    // Delete a single file
+                    File::delete(public_path() . '/uploads/thumbnails/' . $request['prev_photo']);
+                    File::delete(public_path() . '/uploads/profile-pics/' . $request['prev_photo']);
+
+                }
+                  $data = $this->makeThumbnails($request);                   
+               }
+
+               unset($data['_token']);
+               unset($data['prev_photo']);
 
         if ($data['id']) {
             $id = $data['id'];
@@ -114,4 +129,44 @@ class AboutMeController extends Controller
     {
         //
     }
+
+
+    protected function makeThumbnails($request){
+
+        $path = public_path('/uploads/profile-pics');
+
+        if (!is_dir($path)) {
+
+             mkdir($path, 0777, true);
+             mkdir(public_path('/uploads/thumbnails'));
+        }
+
+        //dd('created!');
+
+            /*if (!file_exists('path/to/directory')) {
+                mkdir('path/to/directory', 0777, true);
+                }*/
+
+        $photo = $request->file('photo');
+
+            //creating an array of required indexs from $request object 
+              $input = $request->all();
+              //dd($input);
+
+                $image_name = time() .'_'. md5($photo->getClientOriginalName()) .'.'. $photo->getClientOriginalExtension(); 
+                
+                $input['photo'] = $image_name;
+                $input['photo_url'] = url('uploads/thumbnails/'.$image_name);
+                $destinationPath = public_path('uploads/thumbnails');
+
+                //image manupulation only using image/intervention package
+                $thumb_img = Image::make($photo->getRealPath())->resize(250, 200);
+                $thumb_img->save($destinationPath.'/'.$image_name,80);
+                            
+                $destinationPath = public_path('uploads/profile-pics');
+                $photo->move($destinationPath, $image_name);
+                return $input;
+    }
+
+
 }
