@@ -360,7 +360,7 @@
                 console.log($("form").serialize())
             $.ajax({
                 method:"POST",
-                url:"{{url("/portfolio/contact/")}}",
+                url:"{{url("/portfolio/contact/store/")}}",
                 data:$("form").serialize()+"&_token={{csrf_token()}}",
                 success: function ($response) {
                     console.log($response);

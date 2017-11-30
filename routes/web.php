@@ -61,6 +61,9 @@ Route::post('login', 'Auth\LoginController@login');
 
 Route::post('portfolio/contact/store', 'Backend\Admin\Portfolio\ContactController@store');
 
+Route::get('/ajax-pagination','AjaxLaravelPaginationController@index');
+  Route::post('/ajax-pagination','AjaxLaravelPaginationController@getContactList');
+
 Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 {
 	//Route::get('/dashboard', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@index']);

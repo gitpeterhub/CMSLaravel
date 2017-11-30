@@ -32,8 +32,9 @@ class AboutMeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('backend.admin.portfolio.about-me.form');
+    {   
+        $aboutMe = $this->aboutMeRepo->find(1);
+        return view('backend.admin.portfolio.about-me.form',compact('aboutMe'));
     }
 
     /**
@@ -44,7 +45,28 @@ class AboutMeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        unset($data['_token']);
+
+        if ($data['id']) {
+            $id = $data['id'];
+            unset($data['id']);
+            if ($this->aboutMeRepo->update($data,$id)) {
+                $response['message'] = 'Your info updated successfully!';
+                $response['alert-class'] = 'alert-success';
+            }else{
+                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
+                $response['alert-class'] = 'alert-danger';
+            }
+
+        }else{
+
+            $this->aboutMeRepo->create($data);
+            $response['message'] = 'Your info created successfully!';
+            $response['alert-class'] = 'alert-success';
+        }
+
+        return $response;
     }
 
     /**
@@ -78,18 +100,8 @@ class AboutMeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        unset($data['_token']);
+        //
 
-       if ($this->skillRepo->update($data,$id)) {
-                $response['message'] = 'Skill updated successfully!';
-                $response['alert-class'] = 'alert-success';
-            }else{
-                $response['message'] = 'Opps!Something went wrong.Please,try again later.';
-                $response['alert-class'] = 'alert-danger';
-            }
-
-            return $response;
     }
 
     /**
