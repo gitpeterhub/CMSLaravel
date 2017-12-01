@@ -23,8 +23,8 @@ class CreateExperiencesTable extends Migration
             $table->string('duties',100)->nullable();
             $table->string('projects',100)->nullable();
             $table->string('achievements',100)->nullable();
-            $table->string('company_email',50)->unique();
-            $table->string('company_phone',30)->unique();
+            $table->string('company_email',50)->nullable();
+            $table->string('company_phone',30)->nullable();
             $table->string('company_address',50)->nullable();
             $table->string('company_websites',50)->nullable();
             $table->date('company_established')->nullable();

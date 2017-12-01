@@ -11,12 +11,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        About Me
-        <small>13 unfilled fields</small>
+        Expertises
+        <small>Add Expertise</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Portfolio Options</a></li>
-        <li><a href="#"><i></i> Expertise</a></li>
+        <li><a href="{{url('admin/portfolio/expertise')}}"><i></i> Expertise List</a></li>
         <li class="active">Add Expertise</li>
       </ol>
     </section>
@@ -56,7 +56,7 @@
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your achievements" name="achievements" value="" required="required">
+                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your achievements" name="achievements" value="">
                     </div>
                     <button type="submit" class="btn btn-success">Add Expertise</button>
                   </div>
@@ -83,12 +83,47 @@
   $('.expertise').addClass('active');  
   </script>
 
+    <script src="{{asset('plugins/validate/jquery.validate.min.js')}}"></script>
   <script type="text/javascript">
-        $("#expertise").on("submit", function (e) {
 
-            e.preventDefault();
-                console.log($("#expertise").serialize());
-            $.ajax({
+      $(document).ready(function () {
+
+    $('#expertise').validate({ // initialize the plugin
+        rules: {
+            field_of_expertise: {
+                required: true,
+                maxlength: 40,
+                //minlength:4
+            },
+            expertise_details: {
+                required: true,
+                maxlength: 191,
+                //minlength:4
+            },
+            research_topics: {
+                required: true,
+                maxlength: 100,
+                //minlength:4
+            },
+            achievements: {
+                required: false,
+                maxlength: 191,
+                //minlength:4
+            },
+        },
+        messages: {
+            degree: {
+                    required: "Please enter degree",
+                },
+            /*middle: {
+                required: "Please enter middle",
+            },          
+            image: {
+                required: "Please Select logo",*/
+            },
+        submitHandler: function (form) {
+            
+            $.ajax({
                 method:"POST",
                 url:"{{url("/admin/portfolio/expertise/")}}",
                 data:$("#expertise").serialize(),
@@ -102,9 +137,14 @@
                   }
 
         });
+            
+            console.log('form submitted via ajax');
+            //return false; // blocks redirect after submission via ajax
+        },
+    });
 
+});
 
-    });
     </script>  
 
 @endsection

@@ -11,13 +11,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        About Me
-        <small>13 unfilled fields</small>
+        Education
+        <small>Edit Education</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Portfolio Options</a></li>
-        <li><a href="#"><i></i> Education</a></li>
-        <li class="active">Add Degree</li>
+        <li><a href="{{url('admin/portfolio/education/')}}"><i></i> Education List</a></li>
+        <li class="active">Edit Degree</li>
       </ol>
     </section>
 
@@ -71,15 +71,15 @@
                     </div>
                     <div class="form-group">
                       <label for="board_or_university">Board/University:</label>
-                      <input type="text" class="form-control" id="board_or_university" placeholder="Enter Your Board/University" name="board_or_university" value="{{$education->board_or_university}}" required="required">
+                      <input type="text" class="form-control" id="board_or_university" placeholder="Enter Your Board/University" name="board_or_university" value="{{$education->board_or_university}}">
                     </div>
                     <div class="form-group">
                       <label for="score">Score:</label>
-                      <input type="text" class="form-control" id="Score" placeholder="Enter Your Score" name="Score" value="{{$education->score}}" required="required">
+                      <input type="text" class="form-control" id="Score" placeholder="Enter Your Score" name="Score" value="{{$education->score}}">
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="{{$education->achievements}}" required="required">
+                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="{{$education->achievements}}">
                     </div>
                   </div>
                 </div>
@@ -129,6 +129,95 @@ $('.treeview').siblings().removeClass('active');
 
 
     });
+
+
+        $(document).ready(function () {
+
+    $('#education').validate({ // initialize the plugin
+        rules: {
+            degree: {
+                required: true,
+                maxlength: 50,
+                //minlength:4
+            },
+            major: {
+                required: true,
+                maxlength: 50,
+                //minlength:4
+            },
+            enrolled_year: {
+                required: true,
+                maxlength: 10,
+                //minlength:4
+            },
+            graduation_year: {
+                required: true,
+                maxlength: 10,
+                //minlength:4
+            },
+            institution: {
+                required: false,
+                maxlength: 50,
+                //minlength:4
+            },
+            institution_address: {
+                required: false,
+                maxlength: 50,
+                //minlength:4
+            },
+            board_or_university: {
+                required: true,
+                maxlength: 50,
+                //minlength:4
+            },
+            score: {
+                required: false,
+                maxlength: 10,
+                //minlength:4
+            },
+            achievements: {
+                required: false,
+                maxlength: 100,
+                //minlength:4
+            },
+        },
+        messages: {
+            degree: {
+                    required: "Please enter degree",
+                },
+            /*middle: {
+                required: "Please enter middle",
+            },          
+            image: {
+                required: "Please Select logo",*/
+            },
+        submitHandler: function (form) {
+            
+            $.ajax({
+                method:"POST",
+                url:"{{url("/admin/portfolio/education/".$education->id)}}",
+                data:$("#education").serialize(),
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        //$("#education")[0].reset();
+                        $("form input[name=degree]").focus();
+                  },
+                error: function (responseData) {
+                    console.log('Ajax request not recieved!');
+                }
+            });
+            
+            console.log('form submitted via ajax');
+            //return false; // blocks redirect after submission via ajax
+        },
+    });
+
+});
+
+
     </script>  
 
 @endsection

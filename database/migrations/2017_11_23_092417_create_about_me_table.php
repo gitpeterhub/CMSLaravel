@@ -16,8 +16,8 @@ class CreateAboutMeTable extends Migration
         Schema::create('about_me', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',100)->nullable();
-            $table->string('email',100)->unique()->nullable();
-            $table->string('phone',20)->unique()->nullable();
+            $table->string('email',100)->unique();
+            $table->string('phone',20)->unique();
             $table->string('social_links',100)->nullable();
             $table->string('websites',50)->nullable();
             $table->string('address',50)->nullable();

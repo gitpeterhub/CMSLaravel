@@ -26,12 +26,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Users
-        <small>13 New Users</small>
+        Education
+        <small>Education List</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">User Management</li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Portfolio Options</a></li>
+        <li class="active">Eucation List</li>
       </ol>
     </section>
 

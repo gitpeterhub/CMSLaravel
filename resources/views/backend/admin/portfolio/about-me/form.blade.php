@@ -74,27 +74,27 @@
                     </div>
                     <div class="form-group">
                       <label for="social_links">Social Links:</label>
-                      <input type="text" class="form-control" id="social_links" placeholder="Enter Your Social Links" name="social_links" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->social_links}}@else @endif" required="">
+                      <input type="text" class="form-control" id="social_links" placeholder="Enter Your Social Links" name="social_links" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->social_links}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="websites">Websites:</label>
-                      <input type="text" class="form-control" id="websites" placeholder="Enter Your Websites" name="websites" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->websites}}@else @endif" required="">
+                      <input type="text" class="form-control" id="websites" placeholder="Enter Your Websites" name="websites" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->websites}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="address">Address:</label>
-                      <input type="text" class="form-control" id="address" placeholder="Enter Your Duties" name="address" value="@if($aboutMe){{$aboutMe->address}}@else @endif" required="required">
+                      <input type="text" class="form-control" id="address" placeholder="Enter Your Duties" name="address" value="@if($aboutMe){{$aboutMe->address}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="company">Company:</label>
-                      <input type="text" class="form-control" id="company" placeholder="Enter Your Company" name="company" value="@if($aboutMe){{$aboutMe->company}}@else @endif" required="required">
+                      <input type="text" class="form-control" id="company" placeholder="Enter Your Company" name="company" value="@if($aboutMe){{$aboutMe->company}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="position">Position:</label>
-                      <input type="text" class="form-control" id="position" placeholder="Enter Your Positionl" name="position" value="@if($aboutMe){{$aboutMe->position}}@else @endif" required="required">
+                      <input type="text" class="form-control" id="position" placeholder="Enter Your Positionl" name="position" value="@if($aboutMe){{$aboutMe->position}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="birthday">Birth Date:</label>
-                      <input type="date" class="form-control" id="birthday" placeholder="Enter Your Birth Date" name="birthday" value="@if($aboutMe){{$aboutMe->birthday}}@else @endif" required="required">
+                      <input type="date" class="form-control" id="birthday" placeholder="Enter Your Birth Date" name="birthday" value="@if($aboutMe){{$aboutMe->birthday}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="marital_status">Marital Status:</label>
@@ -153,23 +153,23 @@
                     </div>
                     <div class="form-group">
                       <label for="nationality">Nationality:</label>
-                      <input type="text" class="form-control" id="nationality" placeholder="Enter Your Nationality" name="nationality" value="@if($aboutMe){{$aboutMe->nationality}}@else @endif" required="">
+                      <input type="text" class="form-control" id="nationality" placeholder="Enter Your Nationality" name="nationality" value="@if($aboutMe){{$aboutMe->nationality}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="religion">Religion:</label>
-                      <input type="text" class="form-control" id="religion" placeholder="Enter Your Marital Religion" name="religion" value="@if($aboutMe){{$aboutMe->religion}}@else @endif" required="">
+                      <input type="text" class="form-control" id="religion" placeholder="Enter Your Marital Religion" name="religion" value="@if($aboutMe){{$aboutMe->religion}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="interests">Interests:</label>
-                      <input type="text" class="form-control" id="interests" placeholder="Enter Your Interests" name="interests" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->interests}}@else @endif" required="required">
+                      <input type="text" class="form-control" id="interests" placeholder="Enter Your Interests" name="interests" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->interests}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="hobbies">Hobbies:</label>
-                      <input type="text" class="form-control" id="hobbies" placeholder="Enter Your Hobbies" name="hobbies" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->hobbies}}@else @endif" required="required">
+                      <input type="text" class="form-control" id="hobbies" placeholder="Enter Your Hobbies" name="hobbies" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->hobbies}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="strengths">Strengths:</label>
-                      <input type="text" class="form-control" id="strengths" placeholder="Enter Your Strengths" name="strengths" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->strengths}}@else @endif" required="required">
+                      <input type="text" class="form-control" id="strengths" placeholder="Enter Your Strengths" name="strengths" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->strengths}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
@@ -177,19 +177,19 @@
                     </div>
                     <div class="form-group">
                       <label for="skills">Skills:</label>
-                      <input type="text" class="form-control" id="skills" placeholder="Enter Your Skills" name="skills" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->skills}}@else @endif" required="">
+                      <input type="text" class="form-control" id="skills" placeholder="Enter Your Skills" name="skills" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->skills}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="languages">Languages:</label>
-                      <input type="text" class="form-control" id="languages" placeholder="Enter Your Languages" name="languages" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->languages}}@else @endif" required="">
+                      <input type="text" class="form-control" id="languages" placeholder="Enter Your Languages" name="languages" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->languages}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="about_me">About Me:</label>
-                      <input type="text" class="form-control" id="about_me" placeholder="Enter Your About Me" name="about_me" value="@if($aboutMe){{$aboutMe->about_me}}@else @endif" required="">
+                      <input type="text" class="form-control" id="about_me" placeholder="Enter Your About Me" name="about_me" value="@if($aboutMe){{$aboutMe->about_me}}@else @endif">
                     </div>
                     <div class="form-group">
                       <label for="references">references:</label>
-                      <input type="text" class="form-control" id="references" placeholder="Enter Refrences" name="references" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->references}}@else @endif" required="">
+                      <input type="text" class="form-control" id="references" placeholder="Enter Refrences" name="references" data-role="tagsinput" value="@if($aboutMe){{$aboutMe->references}}@else @endif">
                     </div>
                   </div>
                 </div>
@@ -217,6 +217,7 @@
   </script>  
 
   <script src="{{asset('plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js')}}"></script>
+  <script src="{{asset('plugins/validate/jquery.validate.min.js')}}"></script>
 
   <script type="text/javascript">
 
@@ -245,6 +246,8 @@
         }
        });
 
+       
+
        //submit form with ajax
         $("#about_me").on("submit", function (e) {
             e.preventDefault();
@@ -271,28 +274,125 @@
        
 
     });
-/*
-        function checkFields(){
 
-          var count = 2;
-          var count1 = 0;
-          $('#about_me input').each(function(i, obj) {
-              console.log(obj.value);
-              if (obj.value=="") {
-                count++;
-              }
+        /*$(document).ready(function(){
+
+            //javascript validation for form
+       $("#about_me").validate({
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 100
+                },
+                email: {
+                    required: true,
+                    maxlength: 100
+                },
+                phone: {
+                    required: false,
+                    maxlength: 20
+                },
+                social_links: {
+                    required: false,
+                    maxlength: 100
+                },
+                websites: {
+                    required: false,
+                    maxlength: 50
+                },
+                address: {
+                    required: false,
+                    maxlength: 50
+                },
+                company: {
+                    required: false,
+                    maxlength: 50
+                },
+                position: {
+                    required: true,
+                    maxlength: 50
+                },
+                birthday: {
+                    required: false,
+                    maxlength: 3
+                },
+                nationality: {
+                    required: false,
+                    maxlength: 20
+                },
+                religion: {
+                    required: false,
+                    maxlength: 20
+                },
+                interests: {
+                    required: false,
+                    maxlength: 100
+                },
+
+                hobbies: {
+                    required: false,
+                    maxlength: 100
+                },
+                strengths: {
+                    required: false,
+                    maxlength: 100
+                },
+                achievements: {
+                    required: false,
+                    maxlength: 100
+                },
+                skills: {
+                    required: false,
+                    maxlength: 100
+                },
+                languages: {
+                    required: false,
+                    maxlength: 100
+                },
+                about_me: {
+                    required: false,
+                    maxlength: 191
+                },
+                photo: {
+                    required: false,
+                    //maxlength: 100
+                },
+                references: {
+                    required: false,
+                    maxlength: 191
+                },
+
+            },
+
+            submitHandler: function (form) {
+            
+            $.ajax({
+                method:"POST",
+                url:"{{url("/admin/portfolio/education/")}}",
+                data:$("#education").serialize(),
+                success: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        $("#education")[0].reset();
+                        $("form input[name=degree]").focus();
+                  },
+                error: function (responseData) {
+                    console.log('Ajax request not recieved!');
+                }
             });
-              if (count>2) {
-                $(".content-header h1 small").empty();
-                $(".content-header h1 small").text(count-2+" unfilled fields!");
-                count = 2;
-              }else{
-                $(".content-header h1 small").empty();
-                $(".content-header h1 small").text("Your Info is complete!");
-              }
+            
+            console.log('form submitted via ajax');
+            //return false; // blocks redirect after submission via ajax
+        }
 
-              return false; 
-          }*/
+        });
+
+          
+
+
+        })*/
 
     </script>  
 
