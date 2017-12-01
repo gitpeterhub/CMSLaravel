@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\AboutMeRepository;
 use Session;
+use Intervention\Image\ImageManagerStatic as Image;
+use File;
 
 class AboutMeController extends Controller
 {
@@ -45,9 +47,9 @@ class AboutMeController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
         
         //first check for photo
-        $data=[];
         if ($request->hasFile('photo')){
 
                   if (file_exists(public_path() . '/uploads/thumbnails/' . $request['prev_photo'])) {
@@ -57,7 +59,8 @@ class AboutMeController extends Controller
                     File::delete(public_path() . '/uploads/profile-pics/' . $request['prev_photo']);
 
                 }
-                  $data = $this->makeThumbnails($request);                   
+                  $data = $this->makeThumbnails($request);
+
                }
 
                unset($data['_token']);

@@ -123,6 +123,7 @@
                       @if($aboutMe)
                           @if($aboutMe->photo_url!=NULL)
                           <span class="btn btn-primary" id="photo-button">Change Photo</span>
+                          </label>
                           @else
                           <span class="btn btn-primary" id="photo-button">Choose Photo</span>   
                           </label>
@@ -247,11 +248,15 @@
        //submit form with ajax
         $("#about_me").on("submit", function (e) {
             e.preventDefault();
-                console.log($("#about_me").serialize());
+               // console.log($("#about_me").serialize());
+               var formData = new FormData(this);
+               console.log(formData);
             $.ajax({
                 method:"POST",
                 url:"{{url("/admin/portfolio/about-me/")}}",
-                data:$("#about_me").serialize(),
+                data:formData,
+                processData: false,
+                contentType: false,
                 success: function ($response) {
                     console.log($response);
 
