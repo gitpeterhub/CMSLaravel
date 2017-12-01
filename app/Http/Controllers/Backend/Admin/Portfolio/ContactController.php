@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Admin\Portfolio;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\ContactRepository;
+use Illuminate\Support\Facades\Validator;
 
 class ContactController extends Controller
 {
@@ -47,6 +48,22 @@ class ContactController extends Controller
     {
             $data = $request->all();
             unset($data['_token']);
+
+            $rules = array(
+                'name' => 'required|max:50',
+                'email' => 'required|max:100|unique:contacts',
+                'subject' => 'required|max:30',
+                'message' => 'required|max:191'
+            );
+
+            $validation = Validator::make($data, $rules);
+
+            if ($validation->fails()) {
+                //dd($validator->errors());
+                return $validation->errors();
+            }
+
+
             if ($this->contactRepo->create($data)) {
                 $response['message'] = 'Got your message! I will contact you soon.';
                 $response['alert-class'] = 'alert-success';

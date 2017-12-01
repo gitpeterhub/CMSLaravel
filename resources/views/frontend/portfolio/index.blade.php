@@ -364,20 +364,76 @@
                 data:$("form").serialize()+"&_token={{csrf_token()}}",
                 success: function ($response) {
                     console.log($response);
+                    $("#message-box").empty();
+                    if ($response["alert-class"]){
 
-                    $("#message-box").empty();
+                        $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
 
-                      /*  if(data.indexOf("Opps") != -1 ){*/
-                            $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
-                        //}   
-                            $("form")[0].reset();
-                            $("form input[name=name]").focus();
+                    }else{
+                            $.each( $response, function( key, value ) {
+
+                            $("#message-box").append('<div id="message"></div><div class="alert alert-dismissable alert-warning" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-times"></i>'+value+'</div>');
+                        });
+
+                    }
+
+                    $("form")[0].reset();
+                    $("form input[name=name]").focus();
+              
                   }
 
         });
 
 
     });
+
+
+       /* $('#expertise').validate({ // initialize the plugin
+        rules: {
+            name: {
+                required: true,
+                maxlength: 50,
+                //minlength:4
+            },
+            email: {
+                required: true,
+                maxlength: 100,
+                //minlength:4
+            },
+            subject: {
+                required: true,
+                maxlength: 30,
+                //minlength:4
+            },
+            message: {
+                required: true,
+                maxlength: 191,
+                //minlength:4
+            },
+        },
+        submitHandler: function (form) {
+            
+            $.ajax({
+                method:"POST",
+                url:"{{url("/admin/portfolio/expertise/")}}",
+                data:$("#expertise").serialize(),
+                success: function ($response) {
+                    console.log($response);
+                    
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                        $("#expertise")[0].reset();
+                        $("form input[name=field_of_expertise]").focus();
+                  }
+
+        });
+            
+            console.log('form submitted via ajax');
+            //return false; // blocks redirect after submission via ajax
+        },
+    });*/
+
     </script>
 
 
