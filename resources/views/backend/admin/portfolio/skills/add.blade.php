@@ -51,7 +51,7 @@
                       <input type="text" class="form-control" id="major" placeholder="Enter Your Major" name="major" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="start_date">Start Date* :</label>
+                      <label for="start_date">Start Date:</label>
                       <input type="date" class="form-control" id="start_date" placeholder="Enter Your Start Date" name="start_date" value="">
                     </div>
                     <div class="form-group">
@@ -59,7 +59,7 @@
                       <input type="date" class="form-control" id="end_date" placeholder="Enter Your End Date" name="end_date" value="">
                     </div>
                     <div class="form-group">
-                      <label for="institution">Institution:</label>
+                      <label for="institution">Institution* :</label>
                       <input type="text" class="form-control" id="institution" placeholder="Enter Your Institution" name="institution" value="">
                     </div>
                     <div class="form-group">
@@ -74,10 +74,10 @@
                     </div>
                     <div class="form-group">
                       <label for="description">Description:</label>
-                      <input type="text" class="form-control" id="description" placeholder="Enter Your Description" name="description" value="">
+                      <textarea class="form-control" id="description" placeholder="Enter Your Description" name="description"></textarea>
                     </div>
                     <div class="form-group">
-                      <label for="type">Skill Type:</label>
+                      <label for="type">Skill Type* :</label>
                       <select class="form-control" id="type" name="type" required="required" >
                         <option value=0 >Skill</option>
                         <option value=1 >Certificate/Training</option>

@@ -18,8 +18,8 @@ class CreateAboutMeTable extends Migration
             $table->string('name',100)->nullable();
             $table->string('email',100)->unique();
             $table->string('phone',20)->unique();
-            $table->string('social_links',100)->nullable();
-            $table->string('websites',50)->nullable();
+            $table->text('social_links')->nullable();
+            $table->text('websites')->nullable();
             $table->string('address',50)->nullable();
             $table->string('company',50)->nullable();
             $table->string('position',50)->nullable();
@@ -28,16 +28,16 @@ class CreateAboutMeTable extends Migration
             $table->tinyInteger('gender')->nullable();
             $table->string('nationality',20)->nullable();
             $table->string('religion',20)->nullable();
-            $table->string('interests',100)->nullable();
-            $table->string('hobbies',100)->nullable();
-            $table->string('strengths',100)->nullable();
-            $table->string('achievements',100)->nullable();
-            $table->string('skills',100)->nullable();
-            $table->string('languages',100)->nullable();
-            $table->string('about_me',191)->nullable();
+            $table->text('interests')->nullable();
+            $table->text('hobbies')->nullable();
+            $table->text('strengths')->nullable();
+            $table->text('achievements')->nullable();
+            $table->text('skills')->nullable();
+            $table->text('languages')->nullable();
+            $table->text('about_me')->nullable();
             $table->string('photo',100)->nullable();
             $table->string('photo_url',100)->nullable();
-            $table->string('references',191)->nullable();
+            $table->text('references')->nullable();
             $table->timestamps();
         });
     }

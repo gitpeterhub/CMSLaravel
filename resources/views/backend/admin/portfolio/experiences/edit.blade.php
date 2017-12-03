@@ -3,7 +3,8 @@
 <title>AdminLTE 2 | Experiences</title>
 @endsection
 @section('styles')
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css')}}">    
 @endsection
 @section('contents')
   <!-- Content Wrapper. Contains page content -->
@@ -51,11 +52,11 @@
                       <input type="date" class="form-control" id="joined_date" placeholder="Enter Your Joined Date" name="joined_date" value="{{$experience->joined_date}}" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="resigned_date">Resigned Date:</label>
+                      <label for="resigned_date">Resigned Date* :</label>
                       <input type="date" class="form-control" id="resigned_date" placeholder="Enter Your Resigned Date" name="resigned_date" value="{{$experience->resigned_date}}" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="position">Position:</label>
+                      <label for="position">Position* :</label>
                       <input type="text" class="form-control" id="position" placeholder="Enter Your Position" name="position" value="{{$experience->position}}" required="required">
                     </div>
                     <div class="form-group">
@@ -63,12 +64,12 @@
                       <input type="text" class="form-control" id="about_job" placeholder="Enter Your About Job" name="about_job" value="{{$experience->about_job}}">
                     </div>
                     <div class="form-group">
-                      <label for="duties">Duties:</label>
-                      <input type="text" class="form-control" id="duties" placeholder="Enter Your Duties" name="duties" value="{{$experience->duties}}" required="required">
+                      <label for="duties">Duties* :</label>
+                      <input type="text" class="form-control" id="duties" data-role="tagsinput" placeholder="Enter Your Duties" name="duties" value="{{$experience->duties}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="projects">Projects:</label>
-                      <input type="text" class="form-control" id="projects" placeholder="Enter Your Projects" name="projects" value="{{$experience->projects}}">
+                      <input type="text" class="form-control" id="projects" data-role="tagsinput" placeholder="Enter Your Projects" name="projects" value="{{$experience->projects}}">
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -85,7 +86,7 @@
                       <input type="text" class="form-control" id="company_address" placeholder="Enter Your Company Address" name="company_address" value="{{$experience->company_address}}">
                     </div>
                     <div class="form-group">
-                      <label for="company_websites">Company Websites:</label>
+                      <label for="company_websites">Company Website:</label>
                       <input type="text" class="form-control" id="company_websites" placeholder="Enter Your Company websites" name="company_websites" value="{{$experience->company_websites}}">
                     </div>
                     <div class="form-group">
@@ -94,7 +95,7 @@
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your Achievements" name="achievements" value="{{$experience->achievements}}">
+                      <input type="text" class="form-control" id="achievements" data-role="tagsinput" placeholder="Enter Your Achievements" name="achievements" value="{{$experience->achievements}}">
                     </div>
                   </div>
                 </div>
@@ -132,6 +133,7 @@
     });
     </script>  
 
+    <script src="{{asset('plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js')}}"></script>
     <script src="{{asset('plugins/validate/jquery.validate.min.js')}}"></script>
   <script type="text/javascript">
 

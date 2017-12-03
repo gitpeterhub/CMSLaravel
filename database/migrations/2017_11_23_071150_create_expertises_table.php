@@ -16,9 +16,9 @@ class CreateExpertisesTable extends Migration
         Schema::create('expertises', function (Blueprint $table) {
             $table->increments('id');
             $table->string('field_of_expertise',40)->nullable();
-            $table->string('expertise_details',191)->nullable();
-            $table->string('research_topics',100)->nullable();
-            $table->string('achievements',191)->nullable();            
+            $table->text('expertise_details')->nullable();
+            $table->string('research_topic',100)->nullable();
+            $table->text('achievements')->nullable();            
             $table->timestamps();
         });
     }

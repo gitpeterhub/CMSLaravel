@@ -23,7 +23,7 @@ class CreateEducationsTable extends Migration
             $table->string('institution_address',50)->nullable();
             $table->string('board_or_university',50)->nullable();
             $table->string('score',10)->nullable();
-            $table->string('achievements',100)->nullable();
+            $table->text('achievements')->nullable();
             $table->timestamps();
         });
     }

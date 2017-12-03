@@ -19,16 +19,16 @@ class CreateExperiencesTable extends Migration
             $table->date('joined_date');
             $table->date('resigned_date');
             $table->string('position',30)->nullable();
-            $table->string('about_job',191)->nullable();
-            $table->string('duties',100)->nullable();
-            $table->string('projects',100)->nullable();
-            $table->string('achievements',100)->nullable();
+            $table->text('about_job')->nullable();
+            $table->text('duties')->nullable();
+            $table->text('projects')->nullable();
+            $table->text('achievements')->nullable();
             $table->string('company_email',50)->nullable();
             $table->string('company_phone',30)->nullable();
             $table->string('company_address',50)->nullable();
-            $table->string('company_websites',50)->nullable();
+            $table->string('company_website',50)->nullable();
             $table->date('company_established')->nullable();
-            $table->string('about_company',191)->nullable();
+            $table->text('about_company')->nullable();
             $table->timestamps();
         });
     }

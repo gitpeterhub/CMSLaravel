@@ -3,7 +3,8 @@
 <title>AdminLTE 2 | Experiences</title>
 @endsection
 @section('styles')
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css')}}">  
 @endsection
 @section('contents')
   <!-- Content Wrapper. Contains page content -->
@@ -47,16 +48,16 @@
                       <input type="text" class="form-control" id="company_name" placeholder="Enter Your Full Field Of Expertise" name="field_of_expertise" value="{{$expertise->field_of_expertise}}" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="research_topics">Research Topics:</label>
+                      <label for="research_topics">Research Topics* :</label>
                       <input type="text" class="form-control" id="research_topics" placeholder="Enter Your Research Topics" name="research_topics" value="{{$expertise->research_topics}}" required="required">
                     </div>
                     <div class="form-group">
                       <label for="expertise_details">Expertise Details* :</label>
-                      <input type="text" class="form-control" id="expertise_details" placeholder="Enter Your Expertise Details" name="expertise_details" value="{{$expertise->expertise_details}}" required="required">
+                      <textarea class="form-control" id="expertise_details" placeholder="Enter Your Expertise Details" name="expertise_details" required="required">{{$expertise->expertise_details}}</textarea>
                     </div>
                     <div class="form-group">
                       <label for="achievements">Achievements:</label>
-                      <input type="text" class="form-control" id="achievements" placeholder="Enter Your achievements" name="achievements" value="{{$expertise->achievements}}">
+                      <input type="text" class="form-control" id="achievements" data-role="tagsinput" placeholder="Enter Your achievements" name="achievements" value="{{$expertise->achievements}}">
                     </div>
                     <button type="submit" class="btn btn-success">Update Expertise</button>
                   </div>
@@ -83,6 +84,7 @@
   $('.expertise').addClass('active');  
   </script>
 
+  <script src="{{asset('plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.min.js')}}"></script>
     <script src="{{asset('plugins/validate/jquery.validate.min.js')}}"></script>
   <script type="text/javascript">
 

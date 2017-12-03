@@ -185,7 +185,7 @@
                     </div>
                     <div class="form-group">
                       <label for="about_me">About Me:</label>
-                      <input type="text" class="form-control" id="about_me" placeholder="Enter Your About Me" name="about_me" value="@if($aboutMe){{$aboutMe->about_me}}@else @endif">
+                      <textarea class="form-control" id="about_me" placeholder="Enter Your About Me" name="about_me" >@if($aboutMe){{$aboutMe->about_me}}@else @endif</textarea>
                     </div>
                     <div class="form-group">
                       <label for="references">references:</label>
