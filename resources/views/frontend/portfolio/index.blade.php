@@ -314,6 +314,7 @@
     <script src="{{asset('portfolio-assets/assets/Owl/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('portfolio-assets/js/custom.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="{{asset('plugins/validate/jquery.validate.min.js')}}"></script>
     <script>
         // Select all links with hashes
         $('a[href*="#"]')
@@ -354,7 +355,7 @@
     </script>
 
     <script type="text/javascript">
-        $("form").on("submit", function (e) {
+        /*$("form").on("submit", function (e) {
 
             e.preventDefault();
                 console.log($("form").serialize())
@@ -370,9 +371,11 @@
                         $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
 
                     }else{
+
+                            $("#message-box").append('<div class="alert alert-dismissable alert-warning" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>');
                             $.each( $response, function( key, value ) {
 
-                            $("#message-box").append('<div id="message"></div><div class="alert alert-dismissable alert-warning" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-times"></i>'+value+'</div>');
+                            $("#contactform-message").append('<i class="fa fa-times"></i><span>'+value+'</span>');
                         });
 
                     }
@@ -385,10 +388,10 @@
         });
 
 
-    });
+    });*/
 
 
-       /* $('#expertise').validate({ // initialize the plugin
+        $('form').validate({ // initialize the plugin
         rules: {
             name: {
                 required: true,
@@ -413,18 +416,31 @@
         },
         submitHandler: function (form) {
             
-            $.ajax({
+            console.log($("form").serialize())
+            $.ajax({
                 method:"POST",
-                url:"{{url("/admin/portfolio/expertise/")}}",
-                data:$("#expertise").serialize(),
+                url:"{{url("/portfolio/contact/store/")}}",
+                data:$("form").serialize()+"&_token={{csrf_token()}}",
                 success: function ($response) {
                     console.log($response);
-                    
+                    $("#message-box").empty();
+                    if ($response["alert-class"]){
 
-                    $("#message-box").empty();
-                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
-                        $("#expertise")[0].reset();
-                        $("form input[name=field_of_expertise]").focus();
+                        $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+
+                    }else{
+
+                            $("#message-box").append('<div class="alert alert-dismissable alert-warning" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>');
+                            $.each( $response, function( key, value ) {
+
+                            $("#contactform-message").append('<i class="fa fa-times"></i><span>'+value+'</span>');
+                        });
+
+                    }
+
+                    $("form")[0].reset();
+                    $("form input[name=name]").focus();
+              
                   }
 
         });
@@ -432,7 +448,7 @@
             console.log('form submitted via ajax');
             //return false; // blocks redirect after submission via ajax
         },
-    });*/
+    });
 
     </script>
 
