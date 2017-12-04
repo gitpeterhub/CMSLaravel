@@ -55,15 +55,18 @@
                     </div>
                     <div class="col-md-6 col-sm-6 col-xm-6 col-xs-12  bg-gray introduction wow slideInRight">
                         
-                        <h3>{{$aboutMe[0]->name}} <br><span class="text-uppercase font-15"><strong>{{$aboutMe[0]->position}} </strong></span></h3>
-                        <h4><strong>Phone: </strong><br>{{$aboutMe[0]->phone}}</h4>
-                        <h4><strong>Email: </strong><br>{{$aboutMe[0]->email}}</h4>
-                        <h4><strong>Address: </strong><br>{{$aboutMe[0]->address}}</h4>
+                        <h3>{{@$aboutMe[0]->name}} <br><span class="text-uppercase font-15"><strong>{{@$aboutMe[0]->position}} </strong></span></h3>
+                        <h4><strong>Phone: </strong><br>{{@$aboutMe[0]->phone}}</h4>
+                        <h4><strong>Email: </strong><br>{{@$aboutMe[0]->email}}</h4>
+                        <h4><strong>Address: </strong><br>{{@$aboutMe[0]->address}}</h4>
                         <h4><strong>Date of Birth: </strong><br>
+                            @if(@$aboutMe[0]->birthday)
                             <?php
-                               $dt = new DateTime($aboutMe[0]->birthday);
-                               echo $dt->format('F jS, Y');
+                                    $dt = new DateTime($aboutMe[0]->birthday);
+                                    echo $dt->format('F jS, Y');
+                               
                             ?>
+                            @endif
                         </h4>
                     </div>
                 </div>
@@ -87,12 +90,14 @@
             </div>
             <div class="texts text-center">
                 <h2>Hello I'm 
+                @if(@$aboutMe[0]->name)
                 <?php 
                     $name = explode(" ",$aboutMe[0]->name);
                     echo $name[0];
                 ?>
+                @endif
                 </h2>
-                <p>{{$aboutMe[0]->about_me}}</p>
+                <p>{{@$aboutMe[0]->about_me}}</p>
             </div>
         </div>
         <div class="clearfix"></div>
