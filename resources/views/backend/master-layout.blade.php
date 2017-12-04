@@ -241,7 +241,8 @@
  -->
 <!-- Bootstrap 3.3.7 -->
 <script src="{{url('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
-@yield('scripts')
+@yield('scripts')  
+</script>
 <!-- FastClick -->
 <script src="{{url('bower_components/fastclick/lib/fastclick.js')}}"></script>
 <!-- AdminLTE App -->

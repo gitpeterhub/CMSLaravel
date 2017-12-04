@@ -120,9 +120,13 @@ $('.treeview').siblings().removeClass('active');
                     console.log($response);
 
                     $("#message-box").empty();
-                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                     $("#message-box").prepend('<div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div>');
                         //$("#education")[0].reset();
                         $("form input[name=degree]").focus();
+                      
+                      $("#message-box").hide();
+                        $("#message-box").show(1000);
+                        $("#message-box").hide(4000);
                   }
 
         });
@@ -201,9 +205,12 @@ $('.treeview').siblings().removeClass('active');
                     console.log($response);
 
                     $("#message-box").empty();
-                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                     $("#message-box").prepend('<div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div>');
                         //$("#education")[0].reset();
                         $("form input[name=degree]").focus();
+                        $("#message-box").hide();
+                        $("#message-box").show(1000);
+                        $("#message-box").hide(4000);
                   },
                 error: function (responseData) {
                     console.log('Ajax request not recieved!');

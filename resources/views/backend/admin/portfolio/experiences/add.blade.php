@@ -52,8 +52,8 @@
                       <input type="date" class="form-control" id="joined_date" placeholder="Enter Your Joined Date" name="joined_date" value="" required="required">
                     </div>
                     <div class="form-group">
-                      <label for="resigned_date">Resigned Date* :</label>
-                      <input type="date" class="form-control" id="resigned_date" placeholder="Enter Your Resigned Date" name="resigned_date" value="" required="required">
+                      <label for="resigned_date">Resigned Date :</label>
+                      <input type="date" class="form-control" id="resigned_date" placeholder="Enter Your Resigned Date" name="resigned_date" value="">
                     </div>
                     <div class="form-group">
                       <label for="position">Position* :</label>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                       <label for="about_job">About Job:</label>
-                      <input type="text" class="form-control" id="about_job" placeholder="Enter Your About Job" name="about_job" value="">
+                      <textarea class="form-control" id="about_job" placeholder="Write about Your Job" name="about_job" ></textarea>
                     </div>
                     <div class="form-group">
                       <label for="duties">Duties* :</label>
@@ -86,8 +86,8 @@
                       <input type="text" class="form-control" id="company_address" placeholder="Enter Your Company Address" name="company_address" value="">
                     </div>
                     <div class="form-group">
-                      <label for="company_websites">Company Website:</label>
-                      <input type="text" class="form-control" id="company_websites" placeholder="Enter Your Company websites" name="company_websites" value="">
+                      <label for="company_website">Company Website:</label>
+                      <input type="text" class="form-control" id="company_website" placeholder="Enter Your Company website" name="company_website" value="">
                     </div>
                     <div class="form-group">
                       <label for="company_established">Company Established:</label>
@@ -141,7 +141,7 @@
                 //minlength:4
             },
             resigned_date: {
-                required: true,
+                required: false,
                 //maxlength: 10,
                 //minlength:4
             },
@@ -221,9 +221,12 @@
                     console.log($response);
 
                     $("#message-box").empty();
-                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
+                     $("#message-box").prepend('<div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div>');
                         $("#experience")[0].reset();
                         $("form input[name=company_name]").focus();
+                        $("#message-box").hide();
+                        $("#message-box").show(1000);
+                        $("#message-box").hide(4000);
                   }
 
         });

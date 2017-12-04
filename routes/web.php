@@ -12,9 +12,7 @@
 */
 use Illuminate\Support\Facades\Session;
 
-Route::get('/', function () {
-    return view('frontend.portfolio.index');
-});
+Route::get("/", "Frontend\Visitors\PortfolioPageController@index");
 
 Route::get('/admin', function(){
 	return view('backend.admin.login');

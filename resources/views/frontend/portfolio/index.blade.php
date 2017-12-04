@@ -54,11 +54,17 @@
                         <img src="{{asset('portfolio-assets/images/funny-profile-pictures.jpg')}}">
                     </div>
                     <div class="col-md-6 col-sm-6 col-xm-6 col-xs-12  bg-gray introduction wow slideInRight">
-                        <h3>John Doe <br><span class="text-uppercase font-15"><strong>Lawyer and Consultant </strong></span></h3>
-                        <h4><strong>Phone: </strong><br> 9876543210</h4>
-                        <h4><strong>Email: </strong><br> example@xyz.com</h4>
-                        <h4><strong>Address: </strong><br> Kathmandu, Nepal</h4>
-                        <h4><strong>Date of Birth: </strong><br> March 14th, 1984</h4>
+                        
+                        <h3>{{$aboutMe[0]->name}} <br><span class="text-uppercase font-15"><strong>{{$aboutMe[0]->position}} </strong></span></h3>
+                        <h4><strong>Phone: </strong><br>{{$aboutMe[0]->phone}}</h4>
+                        <h4><strong>Email: </strong><br>{{$aboutMe[0]->email}}</h4>
+                        <h4><strong>Address: </strong><br>{{$aboutMe[0]->address}}</h4>
+                        <h4><strong>Date of Birth: </strong><br>
+                            <?php
+                               $dt = new DateTime($aboutMe[0]->birthday);
+                               echo $dt->format('F jS, Y');
+                            ?>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -80,8 +86,13 @@
                 </div>
             </div>
             <div class="texts text-center">
-                <h2>Hello I'm John</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <h2>Hello I'm 
+                <?php 
+                    $name = explode(" ",$aboutMe[0]->name);
+                    echo $name[0];
+                ?>
+                </h2>
+                <p>{{$aboutMe[0]->about_me}}</p>
             </div>
         </div>
         <div class="clearfix"></div>

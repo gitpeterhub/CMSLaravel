@@ -17,7 +17,7 @@ class CreateExperiencesTable extends Migration
             $table->increments('id');
             $table->string('company_name',50)->nullable();
             $table->date('joined_date');
-            $table->date('resigned_date');
+            $table->date('resigned_date')->nullable();
             $table->string('position',30)->nullable();
             $table->text('about_job')->nullable();
             $table->text('duties')->nullable();

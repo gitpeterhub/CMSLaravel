@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-md-12">
               <div id="message-box"></div>
-              <form id="about_me" action="{{url('/admin/contact/')}}" method="POST" enctype="multipart/form-data">
+              <form id="about-me" action="#" method="POST" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <input type="text" name="id" class="hidden" value="@if($aboutMe){{$aboutMe->id}}@else @endif">
                 <div class="form-group hidden">
@@ -249,7 +249,7 @@
        
 
        //submit form with ajax
-        $("#about_me").on("submit", function (e) {
+        /*$("#about-me").on("submit", function (e) {
             e.preventDefault();
                // console.log($("#about_me").serialize());
                var formData = new FormData(this);
@@ -273,12 +273,12 @@
         
        
 
-    });
+    });*/
 
-        /*$(document).ready(function(){
+        $(document).ready(function(){
 
             //javascript validation for form
-       $("#about_me").validate({
+       $("#about-me").validate({
             rules: {
                 name: {
                     required: true,
@@ -298,7 +298,7 @@
                 },
                 websites: {
                     required: false,
-                    maxlength: 50
+                    //maxlength: 50
                 },
                 address: {
                     required: false,
@@ -314,7 +314,7 @@
                 },
                 birthday: {
                     required: false,
-                    maxlength: 3
+                    maxlength: 11
                 },
                 nationality: {
                     required: false,
@@ -326,32 +326,32 @@
                 },
                 interests: {
                     required: false,
-                    maxlength: 100
+                   // maxlength: 100
                 },
 
                 hobbies: {
                     required: false,
-                    maxlength: 100
+                   // maxlength: 100
                 },
                 strengths: {
                     required: false,
-                    maxlength: 100
+                    //maxlength: 100
                 },
                 achievements: {
                     required: false,
-                    maxlength: 100
+                   // maxlength: 100
                 },
                 skills: {
                     required: false,
-                    maxlength: 100
+                    //maxlength: 100
                 },
                 languages: {
                     required: false,
-                    maxlength: 100
+                    //maxlength: 100
                 },
                 about_me: {
                     required: false,
-                    maxlength: 191
+                    //maxlength: 191
                 },
                 photo: {
                     required: false,
@@ -359,40 +359,49 @@
                 },
                 references: {
                     required: false,
-                    maxlength: 191
+                   // maxlength: 191
                 },
 
             },
 
             submitHandler: function (form) {
             
-            $.ajax({
-                method:"POST",
-                url:"{{url("/admin/portfolio/education/")}}",
-                data:$("#education").serialize(),
-                success: function ($response) {
+            var formData = new FormData($("#about-me")[0]);
+               console.log(formData);
+            $.ajax({
+                method:"POST",
+                url:"{{url("/admin/portfolio/about-me/")}}",
+                data:formData,
+                processData: false,
+                contentType: false,
+                success: function ($response) {
                     console.log($response);
 
                     $("#message-box").empty();
-                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
-                        $("#education")[0].reset();
-                        $("form input[name=degree]").focus();
+                     $("#message-box").prepend('<div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div>');
+                        //$("#experience")[0].reset();
+                        $("form input[name=name]").focus();
+                        $("#message-box").hide();
+                        $("#message-box").show(1000);
+                        $("#message-box").hide(4000);   
                   },
-                error: function (responseData) {
-                    console.log('Ajax request not recieved!');
-                }
-            });
+                error: function ($response) {
+                    console.log($response);
+
+                    $("#message-box").empty();
+                     $("#message-box").prepend('<div id="message"></div><div class="alert alert-dismissable warning id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>Something went wrong! Try again.</div>');
+                        //$("#experience")[0].reset();
+                        $("form input[name=name]").focus();
+        }
+
+        });
             
             console.log('form submitted via ajax');
             //return false; // blocks redirect after submission via ajax
         }
 
-        });
-
-          
-
-
-        })*/
+        })       
+        })
 
     </script>  
 
