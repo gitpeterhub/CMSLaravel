@@ -45,7 +45,7 @@ abstract class Repository implements RepositoryInterface {
      * @return mixed
      */
     public function all($columns = array('*')) {
-        return $this->model->get($columns);
+        return $this->model->orderBy("id","desc")->get($columns);
     }
 
     /**

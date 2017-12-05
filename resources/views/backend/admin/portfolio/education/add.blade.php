@@ -125,7 +125,7 @@ $('.treeview').siblings().removeClass('active');
                 //minlength:4
             },
             enrolled_year: {
-                required: true,
+                required: false,
                 maxlength: 10,
                 //minlength:4
             },

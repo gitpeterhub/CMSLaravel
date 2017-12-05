@@ -107,6 +107,40 @@
             <h3>EXPERIENCE</h3>
         </div>
         <div class="container rel-div">
+            @if(!isset($experiences) || !$experiences->isEmpty() )
+            @foreach($experiences as $experience)
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="yr-div clearfix">
+                        <h6 class="wow slideInLeft"><strong>
+                            <?php
+                                    $dt = new DateTime($experience->joined_date);
+                                    echo $dt->format(('F jS, Y'));
+                               
+                            ?>-
+                            @if(!isset($experience->resigned_date))
+                            NOW
+                            @else
+
+                            <?php
+                                    $dt = new DateTime($experience->resigned_date);
+                                    echo $dt->format('F jS, Y');
+                               
+                            ?>
+                            @endif
+                        </strong></h6>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="exp-div">
+                        <div class="dot hidden-xs wow fadeInUp"></div>
+                        <h4 class="wow slideInRight">{{$experience->company_name}}</h4>
+                        <p class="wow slideInRight">{{$experience->about_job}}</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @else
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="yr-div clearfix">
@@ -121,20 +155,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="yr-div clearfix">
-                        <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="exp-div">
-                        <div class="dot hidden-xs wow fadeInUp"></div>
-                        <h4 class="wow slideInRight">Company name</h4>
-                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
         <div class="clearfix"></div>
     </section>
@@ -143,6 +164,24 @@
             <h3>EDUCATION</h3>
         </div>
         <div class="container">
+            @if(!isset($educations) || !$educations->isEmpty() )
+            @foreach($educations as $education)
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <div class="yr-div clearfix">
+                        <h4 class="wow slideInLeft"><strong>{{@$education->enrolled_year}}-{{$education->graduation_year}}</strong></h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="exp-div">
+                        <div class="dot hidden-xs wow fadeInUp"></div>
+                        <h4 class="wow slideInRight">{{$education->degree}}</h4>
+                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @else
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="yr-div clearfix">
@@ -157,20 +196,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="yr-div clearfix">
-                        <h4 class="wow slideInLeft"><strong>2020-2023</strong></h4>
-                    </div>
-                </div>
-                <div class="col-md-6 col-sm-6">
-                    <div class="exp-div">
-                        <div class="dot hidden-xs wow fadeInUp"></div>
-                        <h4 class="wow slideInRight">Company name</h4>
-                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-            </div>
+            @endif
         </div>
         <div class="clearfix"></div>
     </section>
@@ -182,11 +208,15 @@
 
         <div class="container">
             <div class="row">
+                @if(!isset($skills) || !$skills->isEmpty() )
+                @foreach($skills as $skill)
                 <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInLeft">
-                        <h4>Hyper Text Markup Language(HTML)</h4>
+                        <h4>{{$skill->certificate_title}}</h4>
                     </div>
                 </div>
+                @endforeach
+                @else
                 <div class="col-md-6 col-sm-6">
                     <div class="skill wow fadeInRight">
                         <h4>Hyper Text Markup Language(HTML)</h4>
@@ -212,6 +242,7 @@
                         <h4>Hyper Text Markup Language(HTML)</h4>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         <div class="clearfix"></div>
@@ -223,6 +254,16 @@
         </div>
         <div class="container p-40">
             <div class="owl-carousel owl-theme">
+                @if(!isset($expertises) || !$expertises->isEmpty())
+                @foreach($expertises as $expertise)
+                <div class="item">
+                    <div class="expert">
+                        <h4>Jquery</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </div>
+                @endforeach
+                @else
                 <div class="item">
                     <div class="expert">
                         <h4>Jquery</h4>
@@ -259,6 +300,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         <div class="clearfix"></div>
@@ -301,9 +343,9 @@
                 </div>
                 <div class="col-md-6 col-sm-6 b-l">
                     <div class="footer-contact">
-                        <h4>John Doe <br><span class="text-uppercase font-15"><small>Lawyer and Consultant </small></span></h4>
-                        <h5><strong>Phone: </strong><br> 9876543210</h5>
-                        <h5><strong>Email: </strong><br> example@xyz.com</h5>
+                        <h4>{{@$aboutMe[0]->name}} <br><span class="text-uppercase font-15"><small>{{@$aboutMe[0]->position}} </small></span></h4>
+                        <h5><strong>Phone: </strong><br>{{@$aboutMe[0]->phone}}</h5>
+                        <h5><strong>Email: </strong><br>{{@$aboutMe[0]->email}}</h5>
                         <div class="line"></div>
                         <div class="footer-link">
                             <ul class="text-center">
@@ -322,7 +364,7 @@
         <div class="clearfix"></div>
     </section>
     <section class="copyright text-center">
-        <span> 2017 &copy; John Doe</span>
+        <span> 2017 &copy; Peter Kumal</span>
     </section>
     <div> <a href="#" class="scrollToTop"><i class="fa fa-angle-up" aria-hidden="true"></i></a></div>
     <script src="{{asset('portfolio-assets/js/jquery-3.2.1.min.js')}}"></script>
@@ -371,42 +413,7 @@
     </script>
 
     <script type="text/javascript">
-        /*$("form").on("submit", function (e) {
-
-            e.preventDefault();
-                console.log($("form").serialize())
-            $.ajax({
-                method:"POST",
-                url:"{{url("/portfolio/contact/store/")}}",
-                data:$("form").serialize()+"&_token={{csrf_token()}}",
-                success: function ($response) {
-                    console.log($response);
-                    $("#message-box").empty();
-                    if ($response["alert-class"]){
-
-                        $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
-
-                    }else{
-
-                            $("#message-box").append('<div class="alert alert-dismissable alert-warning" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button></div>');
-                            $.each( $response, function( key, value ) {
-
-                            $("#contactform-message").append('<i class="fa fa-times"></i><span>'+value+'</span>');
-                        });
-
-                    }
-
-                    $("form")[0].reset();
-                    $("form input[name=name]").focus();
-              
-                  }
-
-        });
-
-
-    });*/
-
-
+       
         $('form').validate({ // initialize the plugin
         rules: {
             name: {

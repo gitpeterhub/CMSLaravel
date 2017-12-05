@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group">
                       <label for="enrolled_year">Enrolled Year:</label>
-                      <input type="text" class="form-control" id="enrolled_year" placeholder="Enter Your Enrolled Year" name="enrolled_year" value="{{$education->enrolled_year}}" required="required">
+                      <input type="text" class="form-control" id="enrolled_year" placeholder="Enter Your Enrolled Year" name="enrolled_year" value="{{$education->enrolled_year}}">
                     </div>
                     <div class="form-group">
                       <label for="graduation_year">Graduation Year:</label>
@@ -150,7 +150,7 @@ $('.treeview').siblings().removeClass('active');
                 //minlength:4
             },
             enrolled_year: {
-                required: true,
+                required: false,
                 maxlength: 10,
                 //minlength:4
             },
