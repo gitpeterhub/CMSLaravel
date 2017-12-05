@@ -144,6 +144,6 @@ Route::get('/run-shell-command', function() {
     echo "<pre>$output</pre>";
 });
 
-Auth::routes();
+//Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

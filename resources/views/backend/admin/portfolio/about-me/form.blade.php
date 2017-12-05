@@ -7,12 +7,14 @@
   <link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap-tagsinput-latest/dist/bootstrap-tagsinput.css')}}">
   <style>
  #imagePreview {
-        width: 150px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 200px;
         height: 150px;
-        background-position: center center;
-        background-size: cover;
         -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
         display: inline-block;
+        padding: 5px; 
         margin-bottom: 10px;
     }
   </style>
@@ -245,35 +247,6 @@
           alert("Upload an image");
         }
        });
-
-       
-
-       //submit form with ajax
-        /*$("#about-me").on("submit", function (e) {
-            e.preventDefault();
-               // console.log($("#about_me").serialize());
-               var formData = new FormData(this);
-               console.log(formData);
-            $.ajax({
-                method:"POST",
-                url:"{{url("/admin/portfolio/about-me/")}}",
-                data:formData,
-                processData: false,
-                contentType: false,
-                success: function ($response) {
-                    console.log($response);
-
-                    $("#message-box").empty();
-                     $("#message-box").prepend('<div id = "message-box"><div id="message"></div><div class="alert alert-dismissable '+$response["alert-class"]+'" id="contactform-message"><button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button><i class="fa fa-circle-o"></i>'+$response.message+'</div></div>');
-                        //$("#experience")[0].reset();
-                        $("form input[name=degree]").focus();
-                  }
-
-        });
-        
-       
-
-    });*/
 
         $(document).ready(function(){
 

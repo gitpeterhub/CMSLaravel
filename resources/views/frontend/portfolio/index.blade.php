@@ -176,7 +176,7 @@
                     <div class="exp-div">
                         <div class="dot hidden-xs wow fadeInUp"></div>
                         <h4 class="wow slideInRight">{{$education->degree}}</h4>
-                        <p class="wow slideInRight">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <p class="wow slideInRight">This degree has the major courses of {{$education->major}} and I realized this degree under the hood of {{$education->institution}} affiliated to the board/university {{$education->board_or_university}} and graduated this degree in {{$education->graduation_year}}</p>
                     </div>
                 </div>
             </div>
