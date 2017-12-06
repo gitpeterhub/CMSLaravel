@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('photo')->nullable();
             $table->string('photo_url')->nullable();
+            $table->tinyInteger('approved')->default(0);
             $table->tinyInteger('verified')->default(0);
             $table->string('email_token')->nullable();
             $table->rememberToken();
