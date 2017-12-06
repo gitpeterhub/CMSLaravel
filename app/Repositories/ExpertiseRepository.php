@@ -76,7 +76,7 @@ class ExpertiseRepository extends Repository {
                 $nestedData['expertise_details'] = $expertise->expertise_details;
                 $nestedData['research_topics'] = $expertise->research_topics;
                 $nestedData['achievements'] = $expertise->achievements;
-                $nestedData['action'] = '<a href="/admin/portfolio/expertise/'.$expertise->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="/admin/portfolio/expertise/'.$expertise->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['action'] = '<a href="'.url("/admin/portfolio/expertise/")."/".$expertise->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="'..url("/admin/portfolio/expertise/")."/".$expertise->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }

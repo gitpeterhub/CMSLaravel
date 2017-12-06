@@ -78,7 +78,7 @@ class ExperienceRepository extends Repository {
                 $nestedData['resigned_date'] = $experience->resigned_date;
                 $nestedData['position'] = $experience->position;
                 $nestedData['duties'] = $experience->duties;
-                $nestedData['action'] = '<a href="/admin/portfolio/experience/'.$experience->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="/admin/portfolio/experience/'.$experience->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['action'] = '<a href="'.url("/admin/portfolio/experience/")."/".$experience->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="'.url("/admin/portfolio/experience/")."/".$experience->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }

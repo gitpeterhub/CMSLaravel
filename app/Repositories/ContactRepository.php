@@ -76,7 +76,7 @@ class ContactRepository extends Repository {
                 $nestedData['email'] = $contact->email;
                 $nestedData['subject'] = $contact->subject;
                 $nestedData['message'] = $contact->message;
-                $nestedData['action'] = '<a href="/admin/portfolio/'.$contact->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['action'] = '<a href="'.url("/admin/portfolio/")."/".$contact->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }

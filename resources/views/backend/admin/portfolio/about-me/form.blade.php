@@ -262,7 +262,7 @@
                     maxlength: 100
                 },
                 phone: {
-                    required: false,
+                    required: true,
                     maxlength: 20
                 },
                 social_links: {
