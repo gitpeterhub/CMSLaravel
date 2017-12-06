@@ -76,7 +76,7 @@ class EducationRepository extends Repository {
                 $nestedData['major'] = $education->major;
                 $nestedData['graduation_year'] = $education->graduation_year;
                 $nestedData['board_or_university'] = $education->board_or_university;
-                $nestedData['action'] = '<a href="'.url("/admin/portfolio/education/"."/".$education->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="'.url("/admin/portfolio/education/delete/")."/".$education->id.'" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['action'] = '<a href="'.url("/admin/portfolio/education/".'/'.$education->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="'.url("/admin/portfolio/education/delete/").'/'.$education->id.'" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }

@@ -78,7 +78,7 @@ class SkillRepository extends Repository {
                 $nestedData['start_date'] = $skill->start_date;
                 $nestedData['end_date'] = $skill->end_date;
                 $nestedData['institution'] = $skill->institution;
-                $nestedData['action'] = '<a href="'.url("/admin/portfolio/skill/")."/".$skill->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="'.url("/admin/portfolio/skill/")."/".$skill->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
+                $nestedData['action'] = '<a href="'.url("/admin/portfolio/skill/").'/'.$skill->id.'/edit" title="Delete" onclick="userRemove()"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i></a><a href="'.url("/admin/portfolio/skill/").'/'.$skill->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
                 $data[] = $nestedData;
 
             }
