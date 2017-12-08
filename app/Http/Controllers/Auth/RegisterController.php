@@ -69,10 +69,10 @@ class RegisterController extends Controller
         dispatch(new SendVerificationEmail($user));
 */
         $user = $this->create($request->all());
-         $email = new EmailVerification($user);
-        Mail::to($user->email)->send($email);
+         //$email = new EmailVerification($user);
+        //Mail::to($user->email)->send($email);
 
-        return redirect('admin/login')->with('message','You have successfully registered. An email is sent to you for verification');
+        return redirect('admin/login')->with('message','You have successfully registered. your approval is on the way..');
     
         // create the user
         //$user = $this->create($request->all());

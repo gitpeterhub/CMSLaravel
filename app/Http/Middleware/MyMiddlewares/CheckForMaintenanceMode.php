@@ -40,7 +40,7 @@ class CheckForMaintenanceMode
         if ($this->app->isDownForMaintenance()) {
             $cookie = $request->cookie('secret-cookie');
 
-            if ($cookie === null) {
+            if ($cookie == null) {
                return response()->make(view('errors.503'), 503);
             }
 

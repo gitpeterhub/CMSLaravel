@@ -73,6 +73,7 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
    $this->get('/users/{id}/delete', 'Backend\Admin\UserController@destroy');
 
    $this->post('/users/update/{id}', 'Backend\Admin\UserController@update');
+    Route::get('/users/approved/{id}', 'Backend\Admin\UserController@approved');
 
    //datatable post route definition for user management
    $this->post('/get-users/', 'Backend\Admin\UserController@getAll');
@@ -131,7 +132,9 @@ Route::group(['prefix' => '/admin',  'middleware' => 'auth'], function()
 
 	    \Artisan::call('down');
 
-	    return back()->with(compact('response'));
+      //return $response;
+
+	    return back()->withInput();
 	});
    
 });

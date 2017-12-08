@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\ImageManagerStatic as Image;
 use File;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Crypt;
+//use Illuminate\Support\Facades\Crypt;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -60,8 +61,8 @@ class UserController extends Controller
                 'username' => 'required | between:3,15 | unique:users',
                 'password' => 'required',
                 'password_confirmation' => 'required|same:password',
-                'user_type' => 'required',
-                'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                //'user_type' => 'required',
+                //'photo' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
 
             );
 
@@ -186,7 +187,27 @@ class UserController extends Controller
     }
 
 
+    public function approved($id)
+    {
+        // $id = $request->get('id');
 
+        //dd($id);
+        $user = User::findOrFail($id);
+
+        //dd($user);
+
+        if ($user->approved == 1){
+            //dd("jlkjl;kjl31550");
+            $input['approved'] = 0;
+        }else{
+            //dd("fsdafsafsaf");
+            $input['approved'] = 1;
+        }
+        $user->fill($input)->save();
+        Session::flash('flash_message', "User successfully Approved");
+        return back();
+    }
+/*
      public function changePassword(Request $request)
     {
 
@@ -221,7 +242,7 @@ class UserController extends Controller
 
 
     }
-
+*/
 
     protected function makeThumbnails($request){
 

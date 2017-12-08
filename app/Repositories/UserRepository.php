@@ -27,7 +27,8 @@ class UserRepository extends Repository {
                             0 =>'id', 
                             1 =>'name',
                             2 =>'email',
-                            3 =>'action',
+                            3 =>'approved',
+                            4 =>'action',
                             
                         );
   
@@ -72,16 +73,26 @@ class UserRepository extends Repository {
                 $nestedData['id'] = $user->id;
                 $nestedData['name'] = $user->name;
                 $nestedData['email'] = $user->email;
+                if ($user->approved == 0) {
+                    $nestedData["approved"] = '<a href="'.url("/admin/users/approved").'/'.$user->id.'"title="Edit" class="approved" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons "></i>Not Approved</a>';
+                }else{
+                    $nestedData['approved'] = '<a href="'.url("/admin/users/approved").'/'.$user->id.'"title="Edit" class="approved" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons "></i>Approved</a>';
+                }
                 
                 //$nestedData['body'] = substr(strip_tags($post->body),0,50)."...";
                 //$nestedData['created_at'] = date('j M Y h:i a',strtotime($post->created_at));
-               /* $nestedData['actions'] = '<a href="#" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
-                     <a href="#" title="Delete" class="userRemove" btn-value="'.$user->id.'"><i class="fa fa-trash edit-icons del"></i></a>';*/
+               if ($user->user_type == 0) {
+                  
+                  $nestedData['action'] = '<a href="'.url("/admin/users/").'/'.$user->id.'/edit" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>';
 
-                $nestedData['action'] = '<a href="'.url("/admin/users/").'/'.$user->id.'/edit" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
-                     <a href="'.url("/admin/users/").'/'.$user->id.'/delete" title="Delete" onclick="userRemove()"><i class="fa fa-trash edit-icons del"></i></a>';
-                $data[] = $nestedData;
+               }else{
 
+                    $nestedData['action'] = '<a href="'.url("/admin/users/").'/'.$user->id.'/edit" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
+                     <a href="'.url("/admin/users/").'/'.$user->id.'/delete" title="Delete" class="del"><i class="fa fa-trash edit-icons "></i></a>';
+                
+               }
+
+               $data[] = $nestedData;
             }
         }
           

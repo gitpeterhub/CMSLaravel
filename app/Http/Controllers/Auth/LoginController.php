@@ -35,16 +35,22 @@ class LoginController extends Controller
       */
       protected function redirectTo()
       {
-          if (\Auth::user()->verified == 1) {
-              return '/admin/dashboard';
-          }
+            if (\Auth::user()->user_type == 0) {
+                return '/admin/dashboard';
+                
+            }else{
 
-          else {
 
-                \Auth::logout();
-                Session::put('message','You need to verify your email first!');
-              return '/admin/login';
-          }
+              if (\Auth::user()->approved == 1) {
+                return '/admin/dashboard';
+              }else {
+
+                    \Auth::logout();
+                    Session::put('message','You are not approved yet!');
+                  return '/admin/login';
+              }
+        }
+
       }
 
     /**

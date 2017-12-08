@@ -7,6 +7,7 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('css/customize-datatable.css')}}">
+<link rel="stylesheet" href="{{asset('plugins/sweetalert/sweetalert.css')}}">
 <style type="text/css">
     #imagePreview {
         width: 150px;
@@ -60,6 +61,7 @@
                         <th>ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
+                        <th>STATUS</th>
                         <th>ACTION</th>
                     </tr>
                     </thead>
@@ -69,6 +71,7 @@
                         <th>ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
+                        <th>STATUS</th>
                         <th>ACTION</th>
                     </tr>
                     </tfoot>
@@ -126,7 +129,7 @@
                         <input type="password" id="password-confirm" name="password_confirmation" class="form-control" placeholder="Confirm Password" required>    
                     </div>
 
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label class="control-label new-label" for="account-type">Type of Account</label>
 
                         <div class="radio">
@@ -138,7 +141,7 @@
                           <input type="radio" name="user_type" value="4"> Resident
                         </label>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group" >
                         <div id="imagePreview">
                             
@@ -174,6 +177,10 @@
   @endsection
 
 @section('scripts')
+
+<!-- Sweet alert -->
+<script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
+
 
 <script>
 
@@ -242,6 +249,65 @@
         });
 
 });
+
+
+//Sweet alert plugin
+
+$('#users').on('click','.del',function (e) {
+e.preventDefault();
+var link = $(this).attr('href');
+swal({
+title: "Are you sure?",
+text: "You will not be able to recover this user!",
+type: "warning",
+showCancelButton: true,
+confirmButtonColor: '#DD6B55',
+confirmButtonText: 'Yes, delete it!',
+cancelButtonText: "No, cancel plx!",
+closeOnConfirm: false,
+closeOnCancel: false
+},
+function(isConfirm){
+if (isConfirm){
+swal("Deleted!", "This user has been deleted!", "success");
+setTimeout(function () {
+window.location = link;
+},2000);
+return true;
+} else {
+swal("Cancelled", "This user is safe :)", "error");
+return false;
+}
+});
+});
+$('#users').on('click','.approved',function (e) {
+e.preventDefault();
+var link = $(this).attr('href');
+swal({
+title: "Are you sure?",
+text: "Status will Change!",
+type: "warning",
+showCancelButton: true,
+confirmButtonColor: '#DD6B55',
+confirmButtonText: 'Yes, change it!',
+cancelButtonText: "No, cancel plx!",
+closeOnConfirm: false,
+closeOnCancel: false
+},
+function(isConfirm){
+if (isConfirm){
+swal("Updated!", "This user has been approved!", "success");
+setTimeout(function () {
+window.location = link;
+},2000);
+return true;
+} else {
+swal("Cancelled", "This user is not approved :)", "error");
+return false;
+}
+});
+});
+
   
   </script>
 <!-- DataTables -->
@@ -257,11 +323,12 @@
                                 {"data": "id"},
                                 {"data": "name"},
                                 {"data": "email"},
+                                {"data": "approved"},
                                 {"data": "action"}
                             ],
 
                             "columnDefs": [ {
-                                  "targets": [ 3 ],
+                                  "targets": [ 4 ],
                                   "orderable": false
                                 },
 
