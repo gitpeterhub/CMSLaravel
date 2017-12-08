@@ -198,12 +198,12 @@ class UserController extends Controller
 
         if ($user->approved == 1){
             //dd("jlkjl;kjl31550");
-            $input['approved'] = 0;
+            $user->approved = 0;
         }else{
             //dd("fsdafsafsaf");
-            $input['approved'] = 1;
+            $user->approved = 1;
         }
-        $user->fill($input)->save();
+        $user->save();
         Session::flash('flash_message', "User successfully Approved");
         return back();
     }
