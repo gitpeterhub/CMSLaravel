@@ -6,9 +6,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- DataTables -->
   <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <!-- <link rel="stylesheet" href="{{asset('bower_components/datatables.net-bs/css/jquery.dataTables.min.css')}}"> -->
 <link rel="stylesheet" type="text/css" href="{{asset('css/customize-datatable.css')}}">
 <link rel="stylesheet" href="{{asset('plugins/sweetalert/sweetalert.css')}}">
 <style type="text/css">
+
+   /* table.dataTable.select tbody tr,
+    table.dataTable thead th:first-child {
+    cursor: pointer;
+    }*/
+
+
+
     #imagePreview {
         width: 150px;
         height: 150px;
@@ -55,9 +64,11 @@
               <a class="btn btn-success sign-up-btn pull-right" href="#" data-toggle="modal" data-target="#at-signup-filling">
             Add User</a>
                 <button class="btn btn-warning">Add Role</button>
+                <form id="frm-example" action="/path/to/your/script" method="POST">
                 <table border="1" cellpadding="1" cellspacing="1" id="users" class="table table-bordered table-hover" width="100%">
                     <thead>
                     <tr>
+                        <th><input type="checkbox" name="select_all" value="1"></th>
                         <th>ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
@@ -68,6 +79,7 @@
                     <tbody></tbody>
                     <tfoot>
                     <tr>
+                        <th></th>
                         <th>ID</th>
                         <th>NAME</th>
                         <th>EMAIL</th>
@@ -76,6 +88,7 @@
                     </tr>
                     </tfoot>
                 </table>
+            </form>
             </div>
         </div>
         <!-- Datatable row ends -->
@@ -315,6 +328,179 @@ return false;
 </script>
 <script src="{{asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
 <!-- script for datatable plugin -->
+
+
+
+<script type="text/javascript">
+    //copied source: https://jsfiddle.net/gyrocode/abhbs4x8/  or  https://www.gyrocode.com/articles/jquery-datatables-checkboxes/
+// Updates "Select all" control in a data table
+//
+function updateDataTableSelectAllCtrl(table){
+   var $table             = table.table().node();
+   var $chkbox_all        = $('tbody input[type="checkbox"]', $table);
+   var $chkbox_checked    = $('tbody input[type="checkbox"]:checked', $table);
+   var chkbox_select_all  = $('thead input[name="select_all"]', $table).get(0);
+
+   // If none of the checkboxes are checked
+   if($chkbox_checked.length === 0){
+      chkbox_select_all.checked = false;
+      if('indeterminate' in chkbox_select_all){
+         chkbox_select_all.indeterminate = false;
+      }
+
+   // If all of the checkboxes are checked
+   } else if ($chkbox_checked.length === $chkbox_all.length){
+      chkbox_select_all.checked = true;
+      if('indeterminate' in chkbox_select_all){
+         chkbox_select_all.indeterminate = false;
+      }
+
+   // If some of the checkboxes are checked
+   } else {
+      chkbox_select_all.checked = true;
+      if('indeterminate' in chkbox_select_all){
+         chkbox_select_all.indeterminate = true;
+      }
+   }
+}
+
+$(document).ready(function (){
+   // Array holding selected row IDs
+   var rows_selected = [];
+   var table = $('#users').DataTable({
+      //'ajax': 'https://api.myjson.com/bins/1us28',
+      "columns": [              
+                                {"data":"select_all"},
+                                {"data": "id"},
+                                {"data": "name"},
+                                {"data": "email"},
+                                {"data": "approved"},
+                                {"data": "action"}
+                            ],
+
+      'columnDefs': [{
+         'targets': [0],
+         'searchable':false,
+         'orderable':false,
+         'width':'1%',
+         'className': 'dt-body-center',
+         'render': function (data, type, full, meta){
+             return '<input type="checkbox" value="'+data+'">';
+         }
+      }],
+
+      "processing": true,
+      "serverSide": true,
+      "ajax":{
+                    "url": "{{url('admin/get-users')}}",
+                    "dataType": "json",
+                    "type": "POST",
+                    "data":{ _token: "{{csrf_token()}}"}
+            },
+
+      'order': [1, 'asc'],
+      'rowCallback': function(row, data, dataIndex){
+         // Get row ID
+         var rowId = data[0];
+
+         // If row ID is in the list of selected row IDs
+         if($.inArray(rowId, rows_selected) !== -1){
+            $(row).find('input[type="checkbox"]').prop('checked', true);
+            $(row).addClass('selected');
+         }
+      }
+   });
+
+   // Handle click on checkbox
+   $('#users tbody').on('click', 'input[type="checkbox"]', function(e){
+      var $row = $(this).closest('tr');
+
+      // Get row data
+      var data = table.row($row).data();
+
+      // Get row ID
+      var rowId = data[0];
+
+      // Determine whether row ID is in the list of selected row IDs 
+      var index = $.inArray(rowId, rows_selected);
+
+      // If checkbox is checked and row ID is not in list of selected row IDs
+      if(this.checked && index === -1){
+         rows_selected.push(rowId);
+
+      // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
+      } else if (!this.checked && index !== -1){
+         rows_selected.splice(index, 1);
+      }
+
+      if(this.checked){
+         $row.addClass('selected');
+      } else {
+         $row.removeClass('selected');
+      }
+
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(table);
+
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle click on table cells with checkboxes
+   $('#users').on('click', 'tbody td, thead th:first-child', function(e){
+      $(this).parent().find('input[type="checkbox"]').trigger('click');
+   });
+
+   // Handle click on "Select all" control
+   $('thead input[name="select_all"]', table.table().container()).on('click', function(e){
+      if(this.checked){
+         $('#users tbody input[type="checkbox"]:not(:checked)').trigger('click');
+      } else {
+         $('#users tbody input[type="checkbox"]:checked').trigger('click');
+      }
+
+      // Prevent click event from propagating to parent
+      e.stopPropagation();
+   });
+
+   // Handle table draw event
+   table.on('draw', function(){
+      // Update state of "Select all" control
+      updateDataTableSelectAllCtrl(table);
+   });
+    
+   // Handle form submission event 
+   $('#frm-example').on('submit', function(e){
+      var form = this;
+
+      // Iterate over all selected checkboxes
+      $.each(rows_selected, function(index, rowId){
+         // Create a hidden element 
+         $(form).append(
+             $('<input>')
+                .attr('type', 'hidden')
+                .attr('name', 'id[]')
+                .val(rowId)
+         );
+      });
+
+      // FOR DEMONSTRATION ONLY     
+      
+      // Output form data to a console     
+      $('#example-console').text($(form).serialize());
+      console.log("Form submission", $(form).serialize());
+       
+      // Remove added elements
+      $('input[name="id\[\]"]', form).remove();
+       
+      // Prevent actual form submission
+      e.preventDefault();
+   });
+});
+</script>
+
+
+{{-- 
 <script type="text/javascript">
                     $(document).ready(function () {
                          
@@ -344,7 +530,7 @@ return false;
                         });
 
                     });
-   </script>
+   </script> --}}
   
 
 @endsection

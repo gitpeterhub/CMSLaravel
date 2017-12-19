@@ -21,7 +21,6 @@ class UsersTableSeeder extends Seeder
                 'user_type' => 0,
                 'approved' => 1,
                 'verified' => 1,
-                'email' => 'admin@admin.com',
                 'password' => bcrypt('secret'),
         ));
 
