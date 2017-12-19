@@ -12,8 +12,7 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //User::truncate();
-        //factory(App\Models\User::class,25)->create();
+        User::truncate();
 
         User::create(array(
                 'name' => 'admin',
@@ -25,5 +24,7 @@ class UsersTableSeeder extends Seeder
                 'email' => 'admin@admin.com',
                 'password' => bcrypt('secret'),
         ));
+
+        factory(App\Models\User::class,25)->create();
     }
 }

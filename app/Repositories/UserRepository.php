@@ -75,6 +75,10 @@ class UserRepository extends Repository {
                 $nestedData['email'] = $user->email;
                 if ($user->approved == 0) {
                     $nestedData["approved"] = '<a href="'.url("/admin/users/approved").'/'.$user->id.'"title="Edit" class="approved" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons "></i>Not Approved</a>';
+
+                    $nestedData['action'] = '<a href="'.url("/admin/users/").'/'.$user->id.'/edit" title="Edit" class="userUpdate" btn-value="'.$user->id.'"><i class="fa fa-pencil-square-o fa-fw edit-icons edit"></i> </a>
+                             <a href="'.url("/admin/users/").'/'.$user->id.'/delete" title="Delete" class="del"><i class="fa fa-trash edit-icons "></i></a>';
+                    
                 }else{
 
                      //$nestedData['created_at'] = date('j M Y h:i a',strtotime($post->created_at));
