@@ -333,9 +333,11 @@ return false;
 
 <script type="text/javascript">
     //copied source: https://jsfiddle.net/gyrocode/abhbs4x8/  or  https://www.gyrocode.com/articles/jquery-datatables-checkboxes/
+//
 // Updates "Select all" control in a data table
 //
 function updateDataTableSelectAllCtrl(table){
+
    var $table             = table.table().node();
    var $chkbox_all        = $('tbody input[type="checkbox"]', $table);
    var $chkbox_checked    = $('tbody input[type="checkbox"]:checked', $table);
@@ -362,15 +364,24 @@ function updateDataTableSelectAllCtrl(table){
          chkbox_select_all.indeterminate = true;
       }
    }
+
 }
+
 
 $(document).ready(function (){
    // Array holding selected row IDs
    var rows_selected = [];
    var table = $('#users').DataTable({
-      //'ajax': 'https://api.myjson.com/bins/1us28',
-      "columns": [              
-                                {"data":"select_all"},
+      "processing": true,
+      "serverSide": true,
+      "ajax":{
+                "url": "{{url('admin/get-users')}}",
+                "dataType": "json",
+                "type": "POST",
+                "data":{ _token: "{{csrf_token()}}"}
+                                   },
+      //'ajax': '/lab/articles/jquery-datatables-checkboxes/ids-arrays.php',
+       "columns": [             {"data":"select_all"},
                                 {"data": "id"},
                                 {"data": "name"},
                                 {"data": "email"},
@@ -379,30 +390,20 @@ $(document).ready(function (){
                             ],
 
       'columnDefs': [{
-         'targets': [0],
-         'searchable':false,
-         'orderable':false,
-         'width':'1%',
+         'targets': 0,
+         'searchable': false,
+         'orderable': false,
+         'width': '1%',
          'className': 'dt-body-center',
          'render': function (data, type, full, meta){
-             return '<input type="checkbox" value="'+data+'">';
+             return '<input type="checkbox">';
          }
       }],
-
-      "processing": true,
-      "serverSide": true,
-      "ajax":{
-                    "url": "{{url('admin/get-users')}}",
-                    "dataType": "json",
-                    "type": "POST",
-                    "data":{ _token: "{{csrf_token()}}"}
-            },
-
-      'order': [1, 'asc'],
+      'order': [[1, 'asc']],
       'rowCallback': function(row, data, dataIndex){
          // Get row ID
-         var rowId = data[0];
-
+         var rowId = data["select_all"];
+         
          // If row ID is in the list of selected row IDs
          if($.inArray(rowId, rows_selected) !== -1){
             $(row).find('input[type="checkbox"]').prop('checked', true);
@@ -419,14 +420,16 @@ $(document).ready(function (){
       var data = table.row($row).data();
 
       // Get row ID
-      var rowId = data[0];
+      var rowId = data["select_all"];
 
       // Determine whether row ID is in the list of selected row IDs 
       var index = $.inArray(rowId, rows_selected);
 
+
       // If checkbox is checked and row ID is not in list of selected row IDs
       if(this.checked && index === -1){
          rows_selected.push(rowId);
+         
 
       // Otherwise, if checkbox is not checked and row ID is in list of selected row IDs
       } else if (!this.checked && index !== -1){
@@ -465,14 +468,15 @@ $(document).ready(function (){
 
    // Handle table draw event
    table.on('draw', function(){
+
       // Update state of "Select all" control
       updateDataTableSelectAllCtrl(table);
    });
-    
+     
    // Handle form submission event 
-   $('#frm-example').on('submit', function(e){
+   $('#frm-users').on('submit', function(e){
       var form = this;
-
+      
       // Iterate over all selected checkboxes
       $.each(rows_selected, function(index, rowId){
          // Create a hidden element 
@@ -487,7 +491,7 @@ $(document).ready(function (){
       // FOR DEMONSTRATION ONLY     
       
       // Output form data to a console     
-      $('#example-console').text($(form).serialize());
+      $('#users-console').text($(form).serialize());
       console.log("Form submission", $(form).serialize());
        
       // Remove added elements
@@ -497,6 +501,7 @@ $(document).ready(function (){
       e.preventDefault();
    });
 });
+
 </script>
 
 
