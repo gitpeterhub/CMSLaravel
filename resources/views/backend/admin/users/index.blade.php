@@ -11,12 +11,17 @@
 <link rel="stylesheet" href="{{asset('plugins/sweetalert/sweetalert.css')}}">
 <style type="text/css">
 
-   /* table.dataTable.select tbody tr,
+   table.dataTable.select tbody tr,
     table.dataTable thead th:first-child {
     cursor: pointer;
-    }*/
+    }
+
+#users tbody tr.selected{
 
 
+  background-color: #a6b3cd;
+
+}
 
     #imagePreview {
         width: 150px;
@@ -364,7 +369,6 @@ function updateDataTableSelectAllCtrl(table){
          chkbox_select_all.indeterminate = true;
       }
    }
-
 }
 
 
