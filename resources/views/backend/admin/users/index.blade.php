@@ -70,6 +70,7 @@
             Add User</a>
                 <button class="btn btn-warning">Add Role</button>
                 <form id="frm-example" action="/path/to/your/script" method="POST">
+                  <div class="hidden" id="del-btn"><a href="#">Delete</a></div>
                 <table border="1" cellpadding="1" cellspacing="1" id="users" class="table table-bordered table-hover" width="100%">
                     <thead>
                     <tr>
@@ -354,7 +355,7 @@ function updateDataTableSelectAllCtrl(table){
       if('indeterminate' in chkbox_select_all){
          chkbox_select_all.indeterminate = false;
       }
-
+      $("#del-btn").addClass("hidden");
    // If all of the checkboxes are checked
    } else if ($chkbox_checked.length === $chkbox_all.length){
       chkbox_select_all.checked = true;
@@ -362,12 +363,16 @@ function updateDataTableSelectAllCtrl(table){
          chkbox_select_all.indeterminate = false;
       }
 
+      $("#del-btn").removeClass("hidden");
+
    // If some of the checkboxes are checked
    } else {
       chkbox_select_all.checked = true;
       if('indeterminate' in chkbox_select_all){
          chkbox_select_all.indeterminate = true;
       }
+
+      $("#del-btn").removeClass("hidden");
    }
 }
 
