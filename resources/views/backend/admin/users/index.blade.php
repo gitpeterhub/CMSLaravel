@@ -69,7 +69,7 @@
               <a class="btn btn-success sign-up-btn pull-right" href="#" data-toggle="modal" data-target="#at-signup-filling">
             Add User</a>
                 <button class="btn btn-warning">Add Role</button>
-                <form id="frm-example" action="/path/to/your/script" method="POST">
+                <form id="form-users" action="#" method="POST">
                   <div class="hidden" id="del-btn"><a href="#">Delete</a></div>
                 <table border="1" cellpadding="1" cellspacing="1" id="users" class="table table-bordered table-hover" width="100%">
                     <thead>
@@ -94,6 +94,15 @@
                     </tr>
                     </tfoot>
                 </table>
+                <hr>
+
+            <p>Press <b>Submit</b> and check console for URL-encoded form data that would be submitted.</p>
+
+            <p><button>Submit</button></p>
+
+            <b>Data submitted to the server:</b><br>
+            <pre id="users-console">
+            </pre>
             </form>
             </div>
         </div>
@@ -483,7 +492,7 @@ $(document).ready(function (){
    });
      
    // Handle form submission event 
-   $('#frm-users').on('submit', function(e){
+   $('#form-users').on('submit', function(e){
       var form = this;
       
       // Iterate over all selected checkboxes
