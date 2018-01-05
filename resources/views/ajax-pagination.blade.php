@@ -24,7 +24,7 @@
 <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
 <script type="text/javascript">
 
-$('.pagi').delegate('.pagination a','click',function(event){
+$('.pagi').on('click','.pagination a',function(event){
     event.preventDefault();
     var pagiurl = $(this).attr('href');
     $.ajax({
