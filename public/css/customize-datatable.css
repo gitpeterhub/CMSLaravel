@@ -1,0 +1,5 @@
+#users_filter > label, #users_filter > label > input {
+	border-color: solid blue;
+	border-radius: 10px ;
+	outline-style: none;
+}

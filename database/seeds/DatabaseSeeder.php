@@ -12,5 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        /* User::truncate();
+        factory(App\User::class,5)->create();*/
+        Eloquent::unguard();
+        //we can can call another seeder class as
+        $this->call('UsersTableSeeder'); //this is by default*/
     }
 }
