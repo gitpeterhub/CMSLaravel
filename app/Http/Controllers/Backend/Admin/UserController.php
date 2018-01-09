@@ -169,9 +169,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($ids)
     {
-       $this->userRepo->delete($id);
+        //for multiple string of ids
+        $ids = explode(",",$ids);
+       
+        $this->userRepo->delete($ids);
+        
+       
 
        Session::flash('message','User deleted successfully!');
        Session::flash('alert-class', 'alert-success');

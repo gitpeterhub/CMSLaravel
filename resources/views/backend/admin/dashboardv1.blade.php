@@ -42,7 +42,7 @@
         </strong>
     </div>
       @endif
-      @if(@Auth::user()->user_type === 0)
+      @if(@Auth::user()->user_type == 0)
       <a class="btn btn-warning" href="{{url('admin/down')}}">Maintainence Mode On</a><a class="btn btn-success" href="{{url('admin/up')}}">Maintainence Mode Off</a>
       @endif
       <!-- Small boxes (Stat box) -->

@@ -70,7 +70,7 @@
             Add User</a>
                 <button class="btn btn-warning">Add Role</button>
                 <form id="form-users" action="#" method="POST">
-                  <div class="hidden" id="del-btn"><a href="#">Delete</a></div>
+                  <div class="btn btn-danger hidden" id="del-btn"><a href="#">Delete</a></div>
                 <table border="1" cellpadding="1" cellspacing="1" id="users" class="table table-bordered table-hover" width="100%">
                     <thead>
                     <tr>
@@ -336,6 +336,34 @@ return false;
 });
 });
 
+
+$('#del-btn').on('click',function (e) {
+e.preventDefault();
+var link = $(this).attr('href');
+swal({
+title: "Are you sure?",
+text: "You will not be able to recover these users!",
+type: "warning",
+showCancelButton: true,
+confirmButtonColor: '#DD6B55',
+confirmButtonText: 'Yes, delete it!',
+cancelButtonText: "No, cancel plx!",
+closeOnConfirm: false,
+closeOnCancel: false
+},
+function(isConfirm){
+if (isConfirm){
+swal("Deleted!", "These users has been deleted!", "success");
+setTimeout(function () {
+window.location = link;
+},2000);
+return true;
+} else {
+swal("Cancelled", "This user is safe :)", "error");
+return false;
+}
+});
+});
   
   </script>
 <!-- DataTables -->
@@ -383,6 +411,7 @@ function updateDataTableSelectAllCtrl(table){
 
       $("#del-btn").removeClass("hidden");
    }
+
 }
 
 
@@ -460,6 +489,8 @@ $(document).ready(function (){
          $row.removeClass('selected');
       }
 
+      //update url of delete button for checked users
+      $("#del-btn").attr("href","{{url('admin/users')}}/"+rows_selected+"/delete");
       // Update state of "Select all" control
       updateDataTableSelectAllCtrl(table);
 
@@ -479,6 +510,9 @@ $(document).ready(function (){
       } else {
          $('#users tbody input[type="checkbox"]:checked').trigger('click');
       }
+
+      //update url of delete button for checked users
+      $("#del-btn").attr("href","{{url('admin/users/')}}/"+rows_selected+"/delete");
 
       // Prevent click event from propagating to parent
       e.stopPropagation();
