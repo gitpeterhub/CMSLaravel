@@ -81,19 +81,15 @@ abstract class Repository implements RepositoryInterface {
      * @return mixed
      */
     public function delete($ids) {
-        //return User::destory($ids);
-        
-        foreach ($ids as $key => $value) {
-            if (! is_array($key)) {
-                $this->model->delete();
-            }
-        }
-        //dd($data);
-        //$this->model->destory($ids);
+
+        //dd($ids);
+
+        //dd($this->model);
+       $this->model->destroy($ids);
+
+        //dd($record);
         return;
     }
-
-
 
     /**
      * @param $id
@@ -119,11 +115,11 @@ abstract class Repository implements RepositoryInterface {
      * @throws RepositoryException
      */
     public function makeModel() {
-        $model = $this->app->make($this->model());
+        $model = $this->model();
 
         if (!$model instanceof Model)
             throw new RepositoryException("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
 
-        return $this->model = $model->newQuery();
+        return $this->model = $model;
     }
 }

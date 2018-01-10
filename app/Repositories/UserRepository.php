@@ -16,7 +16,7 @@ class UserRepository extends Repository {
      */
     public function model()
     {
-        return 'App\Models\User';
+        return new \App\Models\User;
     }
 
 
